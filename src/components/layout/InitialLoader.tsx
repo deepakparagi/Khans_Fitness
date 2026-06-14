@@ -42,14 +42,15 @@ export function InitialLoader() {
               <span className="animate-pulse">BOOTING...</span>
             </div>
             
-            <div className="font-bebas text-[clamp(50px,10vw,80px)] leading-[0.85] text-center tracking-[-0.02em] w-full text-white">
+            <div className="font-bebas text-[clamp(40px,8vw,70px)] leading-[0.85] text-center tracking-[-0.02em] w-full text-white">
               <motion.div
                 initial={{ clipPath: 'inset(0 100% 0 0)' }}
                 animate={{ clipPath: 'inset(0 0% 0 0)' }}
                 transition={{ duration: 1.5, ease: "circInOut", delay: 0.2 }}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap flex flex-col gap-2"
               >
-                KHAN&apos;S <span className="text-[var(--acid)]">FITNESS</span>
+                <span className="text-[var(--text-muted)] text-[clamp(20px,4vw,30px)] tracking-widest">WELCOME TO</span>
+                <div>KHAN&apos;S <span className="text-[var(--acid)]">FITNESS</span></div>
               </motion.div>
             </div>
 
