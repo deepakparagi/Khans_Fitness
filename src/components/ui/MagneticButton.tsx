@@ -10,7 +10,7 @@ interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   magneticPull?: number;
 }
 
-export function MagneticButton({ children, className, magneticPull = 12, ...props }: MagneticButtonProps) {
+export function MagneticButton({ children, className, magneticPull = 10, ...props }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -19,9 +19,9 @@ export function MagneticButton({ children, className, magneticPull = 12, ...prop
 
     const button = buttonRef.current;
     
-    // Create quick setters for performance
-    const xTo = gsap.quickTo(button, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-    const yTo = gsap.quickTo(button, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+    // Create quick setters for performance with premium, heavy easing
+    const xTo = gsap.quickTo(button, "x", { duration: 0.8, ease: "power4.out" });
+    const yTo = gsap.quickTo(button, "y", { duration: 0.8, ease: "power4.out" });
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = button.getBoundingClientRect();

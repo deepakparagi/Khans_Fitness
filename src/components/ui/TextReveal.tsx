@@ -35,7 +35,7 @@ export function TextReveal({
         duration: 0.8,
         stagger: stagger,
         delay: delay,
-        ease: "power3.out",
+        ease: "power4.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 85%",
