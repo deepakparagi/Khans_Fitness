@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { UtensilsCrossed } from 'lucide-react';
+import { jsPDF } from 'jspdf';
+import { generateAIResponse } from '@/app/actions/ai';
 
 type MealPlan = {
   title: string;
@@ -13,22 +15,90 @@ export default function DietPlannerPage() {
   const [generating, setGenerating] = useState(false);
   const [plan, setPlan] = useState<MealPlan | null>(null);
 
-  const generatePlan = (e: React.FormEvent) => {
+  const generatePlan = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    const objective = formData.get('objective') as string;
+    const preference = formData.get('preference') as string;
+    const mealsDay = formData.get('mealsDay') as string;
+    
     setGenerating(true);
     
-    setTimeout(() => {
+    try {
+      const systemPrompt = `You are an elite, brutalist AI fitness nutrition coach. Generate a highly optimized diet plan.
+CRITICAL: You MUST respond ONLY with a raw JSON object. Do not include markdown formatting, backticks (\`\`\`), or any explanations.
+JSON Format required:
+{
+  "title": "PROTOCOL TITLE (e.g. HYPERTROPHY PROTOCOL)",
+  "meals": [
+    { "name": "MEAL 01: NAME", "food": "comma separated specific foods", "macros": "P: Xg | C: Yg | F: Zg" }
+  ]
+}
+The number of meals in the array MUST exactly match the user's requested meals per day.`;
+
+      const userPrompt = `Objective: ${objective}. Dietary Preference: ${preference}. Meals per day: ${mealsDay}. Calculate and return the JSON protocol.`;
+      
+      const response = await generateAIResponse(userPrompt, systemPrompt);
+      
+      // Attempt to clean any potential markdown fences just in case
+      const cleanResponse = response.replace(/```json/i, '').replace(/```/g, '').trim();
+      const parsedPlan = JSON.parse(cleanResponse);
+      setPlan(parsedPlan);
+    } catch (error) {
+      console.error(error);
       setPlan({
-        title: "HYPERTROPHY MACRO-PLAN",
+        title: "SYSTEM ERROR",
         meals: [
-          { name: "MEAL 01: INITIATION", food: "6 Whole Eggs, 100g Oats, Black Coffee", macros: "P: 45g | C: 60g | F: 30g" },
-          { name: "MEAL 02: PRE-TRAINING", food: "200g Chicken Breast, 200g White Rice", macros: "P: 50g | C: 60g | F: 5g" },
-          { name: "MEAL 03: POST-TRAINING", food: "2 Scoops Whey, 1 Banana", macros: "P: 50g | C: 30g | F: 2g" },
-          { name: "MEAL 04: RECOVERY", food: "200g Lean Beef, Sweet Potato", macros: "P: 45g | C: 40g | F: 15g" }
+          { name: "ERROR", food: "Connection to Nutrition API failed or returned invalid data format.", macros: "P: 0g | C: 0g | F: 0g" }
         ]
       });
+    } finally {
       setGenerating(false);
-    }, 2000);
+    }
+  };
+
+  const downloadPlan = () => {
+    if (!plan) return;
+    
+    const doc = new jsPDF();
+    
+    doc.setFont("courier", "bold");
+    doc.setFontSize(22);
+    doc.text("KHAN'S FITNESS AI PROTOCOL", 20, 30);
+    
+    doc.setFont("courier", "normal");
+    doc.setFontSize(14);
+    doc.text(`PROTOCOL: ${plan.title}`, 20, 50);
+    
+    let yPos = 70;
+    
+    plan.meals.forEach(meal => {
+      if (yPos > 260) {
+        doc.addPage();
+        yPos = 30;
+      }
+      
+      doc.setFont("courier", "bold");
+      doc.setFontSize(12);
+      doc.text(meal.name, 20, yPos);
+      yPos += 8;
+      
+      doc.setFont("courier", "normal");
+      doc.text(`FOOD: ${meal.food}`, 20, yPos);
+      yPos += 8;
+      
+      doc.setFont("courier", "normal");
+      doc.setTextColor(100, 100, 100);
+      doc.text(`MACROS: ${meal.macros}`, 20, yPos);
+      doc.setTextColor(0, 0, 0);
+      yPos += 15;
+    });
+    
+    doc.setFont("courier", "bold");
+    doc.text("EXECUTE PROTOCOL IMMEDIATELY.", 20, yPos + 10);
+
+    doc.save(`KHAN_FITNESS_${plan.title.replace(/\s+/g, '_')}.pdf`);
   };
 
   return (
@@ -50,25 +120,25 @@ export default function DietPlannerPage() {
           <form onSubmit={generatePlan} className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Primary Objective</label>
-              <select className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
-                <option value="cut">Fat Loss (Deficit)</option>
-                <option value="bulk">Muscle Gain (Surplus)</option>
-                <option value="maintain">Maintenance</option>
+              <select name="objective" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                <option value="Fat Loss (Deficit)">Fat Loss (Deficit)</option>
+                <option value="Muscle Gain (Surplus)">Muscle Gain (Surplus)</option>
+                <option value="Maintenance">Maintenance</option>
               </select>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Dietary Preference</label>
-                <select className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
-                  <option value="standard">Standard/Omnivore</option>
-                  <option value="vegetarian">Vegetarian</option>
-                  <option value="vegan">Vegan</option>
+                <select name="preference" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                  <option value="Standard/Omnivore">Standard/Omnivore</option>
+                  <option value="Vegetarian">Vegetarian</option>
+                  <option value="Vegan">Vegan</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Meals/Day</label>
-                <select className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                <select name="mealsDay" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
                   <option value="3">3 Meals</option>
                   <option value="4">4 Meals</option>
                   <option value="5">5 Meals</option>
@@ -91,7 +161,15 @@ export default function DietPlannerPage() {
           ) : plan ? (
             <div className="animate-in fade-in duration-500">
               <div className="font-mono text-[11px] text-[var(--text-muted)] tracking-widest uppercase mb-4">[PROTOCOL_READY]</div>
-              <h2 className="font-bebas text-[48px] text-[var(--text-primary)] uppercase leading-none mb-8">{plan.title}</h2>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                <h2 className="font-bebas text-[48px] text-[var(--text-primary)] uppercase leading-none">{plan.title}</h2>
+                <button 
+                  onClick={downloadPlan}
+                  className="font-mono text-[10px] text-[var(--bg)] bg-[var(--text-primary)] px-4 py-2 uppercase tracking-widest hover:bg-[var(--acid)] transition-colors shrink-0"
+                >
+                  DOWNLOAD PDF ↓
+                </button>
+              </div>
               
               <div className="flex flex-col gap-4">
                 {plan.meals.map((meal: { name: string; food: string; macros: string }, i: number) => (
