@@ -38,10 +38,10 @@ export function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-6 lg:px-12 2xl:px-24 pt-8 lg:pt-[32px] pb-[80px] w-full max-w-[1000px] flex flex-col justify-center flex-1 items-start mt-4 lg:mt-0">
+      <div className="relative z-10 px-6 lg:px-12 2xl:px-24 pt-8 lg:pt-[32px] pb-[60px] w-full max-w-[1000px] flex flex-col justify-center flex-1 items-start mt-4 lg:mt-0">
         
         {/* Top Indicators (Moved inline to prevent overlap) */}
-        <div className="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between w-full mb-6 lg:mb-10 gap-2 lg:gap-0">
+        <div className="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between w-full mb-10 lg:mb-12 gap-2 lg:gap-0">
           <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] md:text-[11px] tracking-widest text-[var(--text-primary)] uppercase">
             <div className="w-1.5 h-1.5 rounded-full bg-[var(--acid)] animate-pulse shrink-0" />
             <span>[SYS: ONLINE] [LOC: GADAG-BETAGERI, KARNATAKA] [RTG: 4.7/5] [EST: 2015]</span>
