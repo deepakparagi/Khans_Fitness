@@ -125,22 +125,22 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 1 }}
           className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-6 sm:gap-8 mt-6 lg:mt-6 w-full max-w-[600px]"
         >
-          <div className="flex flex-col gap-1 flex-1">
+          <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">500+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
           </div>
           <div className="hidden sm:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
-          <div className="flex flex-col gap-1 flex-1">
+          <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">4.7★</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
           </div>
           <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
-          <div className="flex flex-col gap-1 flex-1">
+          <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">6+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
           </div>
           <div className="hidden lg:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
-          <div className="flex flex-col gap-1 flex-1">
+          <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">10+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
           </div>
