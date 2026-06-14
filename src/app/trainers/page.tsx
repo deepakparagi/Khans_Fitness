@@ -58,7 +58,7 @@ const TRAINERS = [
 export default function TrainersPage() {
   return (
     <div className="w-full bg-[var(--bg)]">
-      <section className="relative pt-[144px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[100svh] min-h-[100svh] flex flex-col justify-center overflow-hidden">
+      <section className="relative mt-[64px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[calc(100svh-64px)] min-h-[calc(100svh-64px)] flex flex-col justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 

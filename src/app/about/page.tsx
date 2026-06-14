@@ -30,7 +30,7 @@ export default function AboutPage() {
     <div className="w-full bg-[var(--bg)]">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[100svh] flex items-center justify-center pt-[64px] overflow-hidden">
+      <section className="relative w-full min-h-[calc(100svh-64px)] flex items-center justify-center mt-[64px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
