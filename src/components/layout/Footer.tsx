@@ -103,7 +103,7 @@ export function Footer() {
             [© 2026 KHAN&apos;S FITNESS · GADAG-BETAGERI, KARNATAKA]
           </p>
           <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest">
-            DESIGNED BY DEEPCIPHER STUDIO_
+            DESIGNED BY <a href="https://deepakparagi.github.io/Deepak-Paragi-Portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">DEEPCIPHER STUDIO_</a>
           </p>
         </div>
       </div>
