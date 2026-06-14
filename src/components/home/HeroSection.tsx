@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -11,6 +12,7 @@ const Hero3D = dynamic(() => import('./Hero3D'), { ssr: false });
 
 export function HeroSection() {
   const headingRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -102,10 +104,16 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-3 lg:gap-4 mt-4 lg:mt-5 w-full md:w-auto"
         >
-          <MagneticButton className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[11px] md:text-[12px] uppercase tracking-widest px-6 py-4 hover:bg-[var(--text-primary)] transition-colors">
+          <MagneticButton 
+            onClick={() => router.push('/contact')}
+            className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[11px] md:text-[12px] uppercase tracking-widest px-6 py-4 hover:bg-[var(--text-primary)] transition-colors"
+          >
             INITIALIZE MEMBERSHIP →
           </MagneticButton>
-          <MagneticButton className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[11px] md:text-[12px] uppercase tracking-widest px-6 py-4 hover:border-[var(--acid)] transition-colors">
+          <MagneticButton 
+            onClick={() => router.push('/contact')}
+            className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[11px] md:text-[12px] uppercase tracking-widest px-6 py-4 hover:border-[var(--acid)] transition-colors"
+          >
             EXECUTE TRIAL ▶
           </MagneticButton>
         </motion.div>
