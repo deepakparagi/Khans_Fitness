@@ -1,6 +1,7 @@
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PLANS = [
   {
@@ -180,9 +181,9 @@ export default function PlansPage() {
                 ))}
               </ul>
 
-              <button className="w-full bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] uppercase tracking-widest py-4 hover:bg-[var(--text-primary)] transition-colors duration-300 mt-auto">
+              <Link href="/contact" className="w-full bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] uppercase tracking-widest py-4 hover:bg-[var(--text-primary)] transition-colors duration-300 mt-auto text-center block">
                 INITIALIZE →
-              </button>
+              </Link>
             </div>
           ))}
         </div>
