@@ -90,7 +90,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-inter font-light text-[13px] md:text-[14px] text-[var(--text-secondary)] mt-4 max-w-[520px] text-left"
+          className="font-inter font-light text-[11px] md:text-[12px] text-[var(--text-secondary)] mt-4 max-w-[420px] text-left"
         >
           North Karnataka&apos;s most advanced fitness destination. Est. 2015 · Unisex · AI-Powered. Results guaranteed.
         </motion.p>
@@ -102,10 +102,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-3 lg:gap-4 mt-5 lg:mt-6 w-full md:w-auto"
         >
-          <MagneticButton className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 hover:bg-[var(--text-primary)] transition-colors">
+          <MagneticButton className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[9px] uppercase tracking-widest px-4 py-3 hover:bg-[var(--text-primary)] transition-colors">
             INITIALIZE MEMBERSHIP →
           </MagneticButton>
-          <MagneticButton className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 hover:border-[var(--acid)] transition-colors">
+          <MagneticButton className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[9px] uppercase tracking-widest px-4 py-3 hover:border-[var(--acid)] transition-colors">
             EXECUTE TRIAL ▶
           </MagneticButton>
         </motion.div>
@@ -118,23 +118,23 @@ export function HeroSection() {
           className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-4 sm:gap-8 mt-5 lg:mt-8 w-full max-w-[600px]"
         >
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">500+</span>
-            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
+            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">500+</span>
+            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
           </div>
           <div className="hidden sm:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">4.7★</span>
-            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
+            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">4.7★</span>
+            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
           </div>
           <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">6+</span>
-            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
+            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">6+</span>
+            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
           </div>
           <div className="hidden lg:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">10+</span>
-            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
+            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">10+</span>
+            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
           </div>
         </motion.div>
       </div>
