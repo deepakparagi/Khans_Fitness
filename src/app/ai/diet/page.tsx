@@ -62,41 +62,86 @@ The number of meals in the array MUST exactly match the user's requested meals p
     if (!plan) return;
     
     const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
     
-    doc.setFont("courier", "bold");
-    doc.setFontSize(22);
-    doc.text("KHAN'S FITNESS AI PROTOCOL", 20, 30);
+    // Dark Header
+    doc.setFillColor(15, 15, 15);
+    doc.rect(0, 0, pageWidth, 40, 'F');
     
-    doc.setFont("courier", "normal");
-    doc.setFontSize(14);
-    doc.text(`PROTOCOL: ${plan.title}`, 20, 50);
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(24);
+    doc.text("KHAN'S FITNESS", 20, 22);
     
-    let yPos = 70;
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text("NUTRITIONAL PROTOCOL // AI GENERATED", 20, 32);
     
-    plan.meals.forEach(meal => {
-      if (yPos > 260) {
+    // Title
+    doc.setTextColor(0, 0, 0);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text(plan.title.toUpperCase(), 20, 60);
+    
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, 65, pageWidth - 20, 65);
+    
+    let yPos = 80;
+    
+    plan.meals.forEach((meal) => {
+      // Clean spacing issues from AI
+      const cleanFood = meal.food.replace(/\s+/g, ' ').trim();
+      
+      // Auto-wrap text
+      const splitFood = doc.splitTextToSize(cleanFood, pageWidth - 40);
+      const mealHeight = 20 + (splitFood.length * 6);
+      
+      if (yPos + mealHeight > 280) {
         doc.addPage();
         yPos = 30;
       }
       
-      doc.setFont("courier", "bold");
+      // Meal Name (Left)
+      doc.setFont("helvetica", "bold");
       doc.setFontSize(12);
-      doc.text(meal.name, 20, yPos);
-      yPos += 8;
-      
-      doc.setFont("courier", "normal");
-      doc.text(`FOOD: ${meal.food}`, 20, yPos);
-      yPos += 8;
-      
-      doc.setFont("courier", "normal");
-      doc.setTextColor(100, 100, 100);
-      doc.text(`MACROS: ${meal.macros}`, 20, yPos);
       doc.setTextColor(0, 0, 0);
-      yPos += 15;
+      doc.text(meal.name.toUpperCase(), 20, yPos);
+      
+      // Macros (Right Aligned)
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.setTextColor(120, 120, 120);
+      doc.text(meal.macros, pageWidth - 20, yPos, { align: "right" });
+      
+      yPos += 8;
+      
+      // Food Items (Wrapped)
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      doc.setTextColor(40, 40, 40);
+      doc.text(splitFood, 20, yPos);
+      
+      yPos += (splitFood.length * 6) + 10;
+      
+      // Separator
+      doc.setDrawColor(230, 230, 230);
+      doc.line(20, yPos, pageWidth - 20, yPos);
+      yPos += 10;
     });
     
-    doc.setFont("courier", "bold");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(0, 0, 0);
     doc.text("EXECUTE PROTOCOL IMMEDIATELY.", 20, yPos + 10);
+    
+    // Footer with Page Numbers
+    const pageCount = (doc as any).internal.getNumberOfPages();
+    for(let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setFontSize(8);
+      doc.setTextColor(150, 150, 150);
+      doc.text(`[ KHAN'S FITNESS SYSTEM ] - PAGE ${i} OF ${pageCount}`, pageWidth / 2, 290, { align: 'center' });
+    }
 
     doc.save(`KHAN_FITNESS_${plan.title.replace(/\s+/g, '_')}.pdf`);
   };
