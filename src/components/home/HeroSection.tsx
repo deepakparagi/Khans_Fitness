@@ -118,23 +118,23 @@ export function HeroSection() {
           className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-4 sm:gap-8 mt-5 lg:mt-8 w-full max-w-[600px]"
         >
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">500+</span>
-            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
+            <span className="font-bebas text-[clamp(18px,1.5vw,26px)] text-[var(--acid)] leading-none">500+</span>
+            <span className="font-mono text-[7px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
           </div>
           <div className="hidden sm:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">4.7★</span>
-            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
+            <span className="font-bebas text-[clamp(18px,1.5vw,26px)] text-[var(--acid)] leading-none">4.7★</span>
+            <span className="font-mono text-[7px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
           </div>
           <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">6+</span>
-            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
+            <span className="font-bebas text-[clamp(18px,1.5vw,26px)] text-[var(--acid)] leading-none">6+</span>
+            <span className="font-mono text-[7px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
           </div>
           <div className="hidden lg:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(20px,2vw,32px)] text-[var(--acid)] leading-none">10+</span>
-            <span className="font-mono text-[7px] md:text-[8px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
+            <span className="font-bebas text-[clamp(18px,1.5vw,26px)] text-[var(--acid)] leading-none">10+</span>
+            <span className="font-mono text-[7px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
           </div>
         </motion.div>
       </div>
