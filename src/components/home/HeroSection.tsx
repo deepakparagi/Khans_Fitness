@@ -30,10 +30,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full h-[100svh] overflow-hidden flex flex-col pt-[64px]">
+    <section className="relative w-full min-h-[100svh] overflow-hidden flex flex-col pt-[64px]">
       
       {/* 3D Background */}
-      <div className="absolute inset-0 w-full h-[100svh] z-0 opacity-60 pointer-events-none">
+      <div className="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none">
         <Hero3D />
       </div>
 
