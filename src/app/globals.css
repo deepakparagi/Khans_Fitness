@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-inter: "Inter", sans-serif;
+
+  /* Force 0 border radius everywhere */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-full: 0px;
+
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  /* ── DEFAULT = DARK ── */
+  :root,
+  [data-theme="dark"] {
+    --bg:           #080808;
+    --bg2:          #0D0D0D;
+    --surface:      #111111;
+    --surface2:     #1A1A1A;
+    --surface3:     #222222;
+    --border:       #1A1A1A;
+    --border2:      #2A2A2A;
+    --acid:         #CCFF00;
+    --acid-dim:     rgba(204,255,0,0.08);
+    --acid-border:  rgba(204,255,0,0.25);
+    --red:          #FF2D2D;
+    --text-primary: #F0F0F0;
+    --text-secondary: #888888;
+    --text-muted:   #444444;
+    --nav-bg:       rgba(8,8,8,0.92);
+    --overlay:      rgba(8,8,8,0.82);
+    --card-bg:      #111111;
+    --input-bg:     #111111;
+    --marquee-bg:   #080808;
+    --stripe-bg:    #CCFF00;
+    --stripe-text:  #080808;
+  }
+
+  /* ── LIGHT MODE ── */
+  [data-theme="light"] {
+    --bg:           #F2F2EE;
+    --bg2:          #EBEBE6;
+    --surface:      #FFFFFF;
+    --surface2:     #E8E8E3;
+    --surface3:     #DDDDD8;
+    --border:       #D0D0CA;
+    --border2:      #C0C0BA;
+    --acid:         #6B7A00;
+    --acid-dim:     rgba(107,122,0,0.08);
+    --acid-border:  rgba(107,122,0,0.3);
+    --red:          #CC1A1A;
+    --text-primary: #0A0A0A;
+    --text-secondary: #555555;
+    --text-muted:   #999999;
+    --nav-bg:       rgba(242,242,238,0.94);
+    --overlay:      rgba(242,242,238,0.80);
+    --card-bg:      #FFFFFF;
+    --input-bg:     #FFFFFF;
+    --marquee-bg:   #F2F2EE;
+    --stripe-bg:    #0A0A0A;
+    --stripe-text:  #CCFF00;
+  }
+
+  /* ── BASE RESETS ── */
+  * {
+    transition: background-color 0.25s ease, color 0.2s ease,
+                border-color 0.2s ease, fill 0.2s ease;
+  }
+  /* Never transition these — breaks animations */
+  canvas, [data-no-transition], .gsap-marker-start,
+  .gsap-marker-end, [data-framer-motion] {
+    transition: none !important;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    overflow: hidden; /* Handled by Lenis */
+    scrollbar-width: none;
+  }
+
+  * {
+    cursor: none !important;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  ::selection {
+    background: var(--acid);
+    color: var(--bg);
+  }
+}
+
+@layer utilities {
+  .text-shadow-acid {
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+  }
+  
+  .border-acid {
+    border-color: var(--acid);
+  }
+
+  .theme-toggle-btn:hover svg {
+    color: var(--acid) !important;
+    stroke: var(--acid) !important;
+  }
+}
