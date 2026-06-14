@@ -100,7 +100,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-20 pt-6 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest text-center md:text-left">
-            [© 2025 KHAN&apos;S FITNESS · GADAG-BETAGERI, KARNATAKA]
+            [© 2026 KHAN&apos;S FITNESS · GADAG-BETAGERI, KARNATAKA]
           </p>
           <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest">
             DESIGNED BY DEEPCIPHER STUDIO_
