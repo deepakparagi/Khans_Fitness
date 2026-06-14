@@ -76,7 +76,7 @@ export default function ChatPage() {
                 <span className="font-mono text-[10px] text-[var(--text-muted)] mb-1 tracking-widest">
                   {msg.role === 'user' ? '[USER]' : '[SYSTEM]'}
                 </span>
-                <div className={`p-4 font-mono text-[12px] leading-relaxed ${
+                <div className={`p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap ${
                   msg.role === 'user' 
                     ? 'bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)]' 
                     : 'bg-[var(--acid)] text-black font-bold uppercase'
