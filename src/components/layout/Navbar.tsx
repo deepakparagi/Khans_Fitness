@@ -44,7 +44,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 w-full h-[64px] z-[100] transition-all duration-300 ${
           isScrolled 
             ? 'bg-[var(--nav-bg)] backdrop-blur-md border-b border-[var(--border)]' 
-            : 'bg-transparent border-b border-transparent'
+            : 'bg-[var(--nav-bg)] lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-[var(--border)] lg:border-transparent'
         }`}
       >
         <div className="h-full px-6 lg:px-12 mx-auto flex items-center justify-between">
