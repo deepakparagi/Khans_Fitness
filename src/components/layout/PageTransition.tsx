@@ -28,7 +28,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
           initial={{ top: '100%' }}
           animate={{ top: '-100%' }}
           transition={{ 
-            duration: 0.8, 
+            duration: 1.5, 
             ease: [0.76, 0, 0.24, 1] // brutalist ease
           }}
           className="fixed left-0 w-full h-[100vh] z-[200] bg-[var(--bg)] flex items-center justify-center pointer-events-none"

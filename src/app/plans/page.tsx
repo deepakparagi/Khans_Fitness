@@ -1,4 +1,7 @@
 import { TextReveal } from '@/components/ui/TextReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
+import { PremiumCard } from '@/components/ui/PremiumCard';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -86,14 +89,16 @@ export default function PlansPage() {
       <section className="relative pt-[144px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[100svh] min-h-[100svh] flex flex-col justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero/3139894.jpg"
-            alt="Plans & Pricing"
-            fill
-            className="object-cover opacity-60 grayscale transition-opacity duration-300"
-            quality={90}
-            priority
-          />
+          <ParallaxImage speed={0.12} className="w-full h-[120%] -top-[10%]">
+            <Image 
+              src="/images/hero/3139894.jpg"
+              alt="Plans & Pricing"
+              fill
+              className="object-cover opacity-60 grayscale transition-opacity duration-300"
+              quality={90}
+              priority
+            />
+          </ParallaxImage>
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-[var(--bg)]" />
         </div>
         
@@ -108,9 +113,11 @@ export default function PlansPage() {
               <span className="text-[var(--acid)]">PROTOCOL</span>
             </h1>
           </TextReveal>
-          <p className="font-inter text-[16px] text-[var(--text-secondary)] mt-8 max-w-2xl leading-relaxed">
-            Choose the protocol that fits your performance goals. Every tier includes full access to our facility and the AI fitness optimization network. Couple memberships available — ask at the desk.
-          </p>
+          <ScrollReveal delay={0.4}>
+            <p className="font-inter text-[16px] text-[var(--text-secondary)] mt-8 max-w-2xl leading-relaxed">
+              Choose the protocol that fits your performance goals. Every tier includes full access to our facility and the AI fitness optimization network. Couple memberships available — ask at the desk.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -131,15 +138,15 @@ export default function PlansPage() {
         </div>
 
         {/* 4-Col Plan Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PLANS.map((plan) => (
-            <div 
-              key={plan.id}
-              className={`relative flex flex-col p-8 border ${
-                plan.isOptimal ? 'border-[2px] border-[var(--acid)] dark:bg-[#0D1500] bg-[#E8FF80]' : 'border-[var(--border)] bg-[var(--surface)]'
-              }`}
-            >
-              {plan.isOptimal && (
+        <ScrollReveal yOffset={40}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PLANS.map((plan) => (
+              <PremiumCard 
+                key={plan.id}
+                isOptimal={plan.isOptimal}
+                className="h-full"
+              >
+                {plan.isOptimal && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--acid)] text-[var(--bg)] font-mono text-[10px] uppercase tracking-widest px-3 py-1 whitespace-nowrap">
                   [OPTIMAL_CHOICE]
                 </div>
@@ -184,9 +191,10 @@ export default function PlansPage() {
               <Link href="/contact" className="w-full bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] uppercase tracking-widest py-4 hover:bg-[var(--text-primary)] transition-colors duration-300 mt-auto text-center block">
                 INITIALIZE →
               </Link>
-            </div>
+            </PremiumCard>
           ))}
         </div>
+      </ScrollReveal>
 
         {/* Bottom Note */}
         <div className="mt-16 text-center">
