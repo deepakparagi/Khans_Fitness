@@ -5,6 +5,7 @@ import { CustomCursor } from "@/components/layout/CustomCursor";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { InitialLoader } from "@/components/layout/InitialLoader";
 import Link from 'next/link';
 import { MessageSquare } from 'lucide-react';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -48,6 +49,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-[var(--bg)] text-[var(--text-primary)] font-inter overflow-hidden">
         <ThemeProvider>
+          <InitialLoader />
           <CustomCursor />
         <SmoothScroller>
           <Navbar />
