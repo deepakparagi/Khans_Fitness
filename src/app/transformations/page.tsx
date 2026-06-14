@@ -67,11 +67,11 @@ export default function TransformationsPage() {
             src="/images/hero/4722374.jpg"
             alt="Real Transformations"
             fill
-            className="object-cover opacity-60 grayscale transition-opacity duration-300"
+            className="object-cover opacity-30 grayscale transition-opacity duration-300"
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-[var(--bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
         </div>
         
         <div className="relative z-10 flex flex-col items-center text-center px-6">
@@ -79,7 +79,7 @@ export default function TransformationsPage() {
             [SYS_INF: PROTOCOL_RESULTS]
           </div>
           <TextReveal stagger={0.15} className="items-center">
-            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center">
+            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center drop-shadow-2xl">
               <span className="text-[var(--text-primary)]">REAL</span>
               <span className="text-[var(--acid)]">TRANSFORMATIONS</span>
             </h1>

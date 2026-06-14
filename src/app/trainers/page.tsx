@@ -65,11 +65,11 @@ export default function TrainersPage() {
             src="/images/hero/4661155.jpg"
             alt="Our Trainers"
             fill
-            className="object-cover opacity-60 grayscale transition-opacity duration-300"
+            className="object-cover opacity-30 grayscale transition-opacity duration-300"
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-[var(--bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
         </div>
         
         {/* Header */}
@@ -78,7 +78,7 @@ export default function TrainersPage() {
             [SYS_INF: OPTIMIZATION_TEAM]
           </div>
           <TextReveal stagger={0.15} className="items-center">
-            <h1 className="font-bebas text-[clamp(32px,8vw,120px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center">
+            <h1 className="font-bebas text-[clamp(32px,8vw,120px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center drop-shadow-2xl">
               <span className="text-[var(--text-primary)]">HUMAN OPTIMIZATION</span>
               <span className="text-[var(--acid)]">COACHES</span>
             </h1>

@@ -63,11 +63,11 @@ export default function AIHubPage() {
             src="/images/hero/4722389.jpg"
             alt="AI Fitness Lab"
             fill
-            className="object-cover opacity-60 grayscale transition-opacity duration-300"
+            className="object-cover opacity-30 grayscale transition-opacity duration-300"
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-[var(--bg)]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
         </div>
 
         {/* Header Content */}
@@ -77,7 +77,7 @@ export default function AIHubPage() {
             [AI-POWERED]
           </div>
           <TextReveal stagger={0.15} className="items-center">
-            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center">
+            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center drop-shadow-2xl">
               <span className="text-[var(--text-primary)]">YOUR AI</span>
               <span className="text-[var(--text-primary)]">FITNESS</span>
               <span className="text-[var(--acid)]">LAB</span>
