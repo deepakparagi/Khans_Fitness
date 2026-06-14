@@ -42,17 +42,17 @@ export function HeroSection() {
         
         {/* Top Indicators (Moved inline to prevent overlap) */}
         <div className="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between w-full mb-10 lg:mb-12 gap-2 lg:gap-0">
-          <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] md:text-[11px] tracking-widest text-[var(--text-primary)] uppercase">
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[8px] md:text-[10px] tracking-widest text-[var(--text-primary)] uppercase">
             <div className="w-1.5 h-1.5 rounded-full bg-[var(--acid)] animate-pulse shrink-0" />
             <span>[SYS: ONLINE] [LOC: GADAG-BETAGERI, KARNATAKA] [RTG: 4.7/5] [EST: 2015]</span>
           </div>
-          <div className="font-mono text-[9px] md:text-[11px] tracking-widest text-[var(--text-muted)] uppercase">
+          <div className="font-mono text-[8px] md:text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
             15.4325° N, 75.6358° E
           </div>
         </div>
 
         {/* Main Heading */}
-        <div ref={headingRef} className="flex flex-col font-bebas text-[clamp(40px,11vw,110px)] md:text-[clamp(40px,9vw,120px)] xl:text-[130px] leading-[0.85] tracking-[-0.02em] text-left">
+        <div ref={headingRef} className="flex flex-col font-bebas text-[clamp(36px,9vw,90px)] md:text-[clamp(36px,7.5vw,100px)] xl:text-[110px] leading-[0.85] tracking-[-0.02em] text-left">
           <div className="overflow-hidden pt-4 -mt-4 pb-2">
             <motion.div
               initial={{ y: '120px', opacity: 0 }}
@@ -90,7 +90,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-inter font-light text-[14px] md:text-[15px] text-[var(--text-secondary)] mt-4 max-w-[520px] text-left"
+          className="font-inter font-light text-[13px] md:text-[14px] text-[var(--text-secondary)] mt-4 max-w-[520px] text-left"
         >
           North Karnataka&apos;s most advanced fitness destination. Est. 2015 · Unisex · AI-Powered. Results guaranteed.
         </motion.p>
@@ -102,10 +102,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-3 lg:gap-4 mt-5 lg:mt-6 w-full md:w-auto"
         >
-          <MagneticButton className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] uppercase tracking-widest px-6 py-4 hover:bg-[var(--text-primary)] transition-colors">
+          <MagneticButton className="w-full md:w-auto bg-[var(--acid)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 hover:bg-[var(--text-primary)] transition-colors">
             INITIALIZE MEMBERSHIP →
           </MagneticButton>
-          <MagneticButton className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[12px] uppercase tracking-widest px-6 py-4 hover:border-[var(--acid)] transition-colors">
+          <MagneticButton className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-widest px-5 py-3.5 hover:border-[var(--acid)] transition-colors">
             EXECUTE TRIAL ▶
           </MagneticButton>
         </motion.div>
@@ -118,23 +118,23 @@ export function HeroSection() {
           className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-4 sm:gap-8 mt-5 lg:mt-8 w-full max-w-[600px]"
         >
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(28px,3vw,48px)] text-[var(--acid)] leading-none">500+</span>
-            <span className="font-mono text-[9px] md:text-[11px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
+            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">500+</span>
+            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
           </div>
           <div className="hidden sm:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(28px,3vw,48px)] text-[var(--acid)] leading-none">4.7★</span>
-            <span className="font-mono text-[9px] md:text-[11px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
+            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">4.7★</span>
+            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
           </div>
           <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(28px,3vw,48px)] text-[var(--acid)] leading-none">6+</span>
-            <span className="font-mono text-[9px] md:text-[11px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
+            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">6+</span>
+            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
           </div>
           <div className="hidden lg:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div className="flex flex-col gap-1 flex-1">
-            <span className="font-bebas text-[clamp(28px,3vw,48px)] text-[var(--acid)] leading-none">10+</span>
-            <span className="font-mono text-[9px] md:text-[11px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
+            <span className="font-bebas text-[clamp(24px,2.5vw,40px)] text-[var(--acid)] leading-none">10+</span>
+            <span className="font-mono text-[8px] md:text-[10px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
           </div>
         </motion.div>
       </div>
