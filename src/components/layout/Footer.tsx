@@ -68,9 +68,19 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <h3 className="font-bebas text-2xl text-[var(--text-primary)] tracking-widest">LOC_DATA</h3>
             <ul className="flex flex-col gap-4">
-              <li className="font-mono text-[12px] text-[var(--text-secondary)] uppercase">
-                <span className="block text-[var(--acid)] mb-1">HQ_ADDRESS:</span>
-                {BRAND.address}
+              <li className="font-mono text-[12px] text-[var(--text-secondary)] uppercase flex flex-col items-start gap-2">
+                <div>
+                  <span className="block text-[var(--acid)] mb-1">HQ_ADDRESS:</span>
+                  {BRAND.address}
+                </div>
+                <Link 
+                  href="https://maps.app.goo.gl/BiosExiz7XEDNcof8" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 mt-1 border border-[var(--border)] text-[9px] hover:border-[var(--acid)] hover:text-[var(--acid)] transition-colors"
+                >
+                  VIEW ON MAPS ↗
+                </Link>
               </li>
               <li className="font-mono text-[12px] text-[var(--text-secondary)] uppercase">
                 <span className="block text-[var(--acid)] mb-1">COMMS:</span>
