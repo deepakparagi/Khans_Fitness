@@ -90,7 +90,6 @@
   body {
     background-color: var(--bg);
     color: var(--text-primary);
-    overflow: hidden; /* Handled by Lenis */
     scrollbar-width: none;
   }
 

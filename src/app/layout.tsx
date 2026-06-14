@@ -47,7 +47,7 @@ export default function RootLayout({
           })();
         ` }} />
       </head>
-      <body className="antialiased bg-[var(--bg)] text-[var(--text-primary)] font-inter overflow-hidden">
+      <body className="antialiased bg-[var(--bg)] text-[var(--text-primary)] font-inter">
         <ThemeProvider>
           <InitialLoader />
           <CustomCursor />
