@@ -24,7 +24,7 @@ export function ReviewsSection() {
         
         {/* Row 1: Scroll Left */}
         <div className="group flex overflow-hidden">
-          <div className="flex shrink-0 animate-[marquee_40s_linear_infinite] group-hover:[animation-play-state:paused]">
+          <div className="flex shrink-0 animate-[marquee_35s_linear_infinite] md:animate-[marquee_40s_linear_infinite] group-hover:[animation-play-state:paused]">
             {[...REVIEWS, ...REVIEWS].map((review, i) => (
               <div 
                 key={`r1-${i}`}
@@ -32,7 +32,7 @@ export function ReviewsSection() {
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'fill-[var(--acid)] text-[var(--acid)]' : 'text-[#333]'}`} />
+                    <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'fill-[var(--acid)] text-[var(--acid)]' : 'text-[var(--text-muted)]'}`} />
                   ))}
                 </div>
                 <p className="font-inter text-[14px] text-[var(--text-secondary)] mb-8 leading-relaxed flex-1">
@@ -49,7 +49,7 @@ export function ReviewsSection() {
 
         {/* Row 2: Scroll Right (reverse) */}
         <div className="group flex overflow-hidden">
-          <div className="flex shrink-0 animate-[marquee_40s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
+          <div className="flex shrink-0 animate-[marquee_35s_linear_infinite_reverse] md:animate-[marquee_40s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
             {/* Reverse the array to make it look different from row 1 */}
             {[...REVIEWS.slice().reverse(), ...REVIEWS.slice().reverse()].map((review, i) => (
               <div 
@@ -58,7 +58,7 @@ export function ReviewsSection() {
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'fill-[var(--acid)] text-[var(--acid)]' : 'text-[#333]'}`} />
+                    <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'fill-[var(--acid)] text-[var(--acid)]' : 'text-[var(--text-muted)]'}`} />
                   ))}
                 </div>
                 <p className="font-inter text-[14px] text-[var(--text-secondary)] mb-8 leading-relaxed flex-1">

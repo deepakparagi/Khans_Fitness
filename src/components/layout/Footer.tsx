@@ -7,9 +7,9 @@ export function Footer() {
   return (
     <footer className="bg-[var(--bg)] border-t border-[var(--border)] relative z-10">
       {/* Top Strip */}
-      <div className="w-full bg-[var(--acid)] py-4 overflow-hidden border-b border-[var(--bg)]">
+      <div className="w-full bg-[var(--stripe-bg)] py-4 overflow-hidden border-b border-[var(--border)]">
         <div className="whitespace-nowrap flex items-center justify-center space-x-4">
-          <span className="font-bebas text-40px text-black uppercase tracking-wider leading-none">
+          <span className="font-bebas text-40px text-[var(--stripe-text)] uppercase tracking-wider leading-none">
             KHAN&apos;S FITNESS — ಖಾನ್ಸ್ ಫಿಟ್ನೆಸ್
           </span>
         </div>
@@ -102,7 +102,7 @@ export function Footer() {
           <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest text-center md:text-left">
             [© 2026 KHAN&apos;S FITNESS · GADAG-BETAGERI, KARNATAKA]
           </p>
-          <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest">
+          <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest text-center md:text-right">
             DESIGNED BY <a href="https://deepakparagi.github.io/Deepak-Paragi-Portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">DEEPCIPHER STUDIO_</a>
           </p>
         </div>

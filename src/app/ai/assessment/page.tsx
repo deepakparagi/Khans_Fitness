@@ -65,7 +65,7 @@ export default function AssessmentPage() {
               </div>
             </div>
             
-            <button disabled={analyzing} className="bg-[var(--acid)] text-[#080808] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
+            <button disabled={analyzing} className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
               {analyzing ? '[ANALYZING_DATA...]' : 'INITIALIZE SCAN →'}
             </button>
           </form>

@@ -55,7 +55,7 @@ export function MagneticButton({ children, className, magneticPull = 10, ...prop
   }, [magneticPull]);
 
   return (
-    <div ref={wrapperRef} className="inline-block" data-cursor="magnetic">
+    <div ref={wrapperRef} className="inline-block w-full md:w-auto" data-cursor="magnetic">
       <button
         ref={buttonRef}
         className={cn("relative transition-colors", className)}

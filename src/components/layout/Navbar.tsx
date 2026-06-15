@@ -99,10 +99,9 @@ export function Navbar() {
             
             <button
               onClick={toggle}
-              aria-label="Toggle theme"
+              data-cursor="magnetic"
               style={{
-                background: 'none',
-                border: 'none',
+                all: 'unset',
                 cursor: 'none',
                 width: '40px',
                 height: '40px',
@@ -111,13 +110,17 @@ export function Navbar() {
                 justifyContent: 'center',
                 color: 'var(--text-muted)',
                 flexShrink: 0,
+                borderRadius: '0',
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
               }}
-              className="theme-toggle-btn"
-              data-cursor="magnetic"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark'
-                ? <Sun size={18} color="var(--text-muted)" />
-                : <Moon size={18} color="var(--text-muted)" />
+                ? <Sun size={16} strokeWidth={1.5} />
+                : <Moon size={16} strokeWidth={1.5} />
               }
             </button>
 
@@ -134,12 +137,28 @@ export function Navbar() {
           <div className="flex xl:hidden items-center gap-2">
             <button
               onClick={toggle}
-              aria-label="Toggle theme"
-              className="p-2"
+              data-cursor="magnetic"
+              style={{
+                all: 'unset',
+                cursor: 'none',
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-muted)',
+                flexShrink: 0,
+                borderRadius: '0',
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
+              }}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark'
-                ? <Sun size={20} color="var(--text-muted)" />
-                : <Moon size={20} color="var(--text-muted)" />
+                ? <Sun size={16} strokeWidth={1.5} />
+                : <Moon size={16} strokeWidth={1.5} />
               }
             </button>
             <button 
@@ -179,7 +198,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="font-bebas text-[clamp(28px,8vw,72px)] text-[var(--text-primary)] hover:text-[var(--acid)] leading-none uppercase break-words"
+                    className="font-bebas text-[56px] text-[var(--text-primary)] hover:text-[var(--acid)] leading-none uppercase break-words"
                   >
                     {link.label}
                   </Link>

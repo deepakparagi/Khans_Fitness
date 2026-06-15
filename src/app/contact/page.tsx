@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { MapPin, Phone, Mail, Clock, MessageCircle, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
@@ -10,9 +10,18 @@ import { generateWhatsAppLink } from '@/lib/utils';
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    document.title = "Contact Khan's Fitness | +91 99645 91846";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Contact Khan's Fitness | +91 99645 91846");
+    }
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get('name') as string;
     const phone = formData.get('phone') as string;
     const email = formData.get('email') as string;
@@ -24,7 +33,10 @@ export default function ContactPage() {
     window.open(`https://wa.me/919964591846?text=${text}`, '_blank');
 
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => {
+      setSubmitted(false);
+      form.reset();
+    }, 3000);
   };
 
   return (
@@ -36,7 +48,7 @@ export default function ContactPage() {
             src="/images/hero/804834.jpg"
             alt="Contact Us"
             fill
-            className="object-cover opacity-30 grayscale transition-opacity duration-300"
+            className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
             quality={90}
             priority
           />
@@ -45,7 +57,7 @@ export default function ContactPage() {
         
         {/* Header */}
         <div className="relative z-10 mb-16 flex flex-col items-center text-center">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-3 py-1 inline-block">
+          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [GET IN TOUCH]
           </div>
           <TextReveal stagger={0.15} className="items-center">
@@ -68,78 +80,75 @@ export default function ContactPage() {
               DATA TRANSMISSION
             </h3>
 
-            {submitted ? (
-              <div className="bg-[var(--surface)] border border-[var(--acid)] p-12 flex flex-col items-center text-center">
-                <div className="font-mono text-[14px] text-[var(--acid)] uppercase mb-4 tracking-widest">
-                  [DATA_RECEIVED]
-                </div>
-                <p className="font-inter text-[var(--text-secondary)]">
-                  Channel open. Our team will initiate contact within 24 hours.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-2">
-                    <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Name *</label>
-                    <input 
-                      type="text" 
-                      name="name"
-                      required
-                      className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors"
-                      placeholder="ENTER NAME"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Phone *</label>
-                    <input 
-                      type="tel" 
-                      name="phone"
-                      required
-                      className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors"
-                      placeholder="ENTER PHONE"
-                    />
-                  </div>
-                </div>
-
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Email Address</label>
+                  <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Name *</label>
                   <input 
-                    type="email" 
-                    name="email"
+                    type="text" 
+                    name="name"
+                    required
                     className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors"
-                    placeholder="ENTER EMAIL"
+                    placeholder="ENTER NAME"
                   />
                 </div>
-
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Fitness Goal</label>
-                  <select name="goal" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                  <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Phone *</label>
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    required
+                    className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors"
+                    placeholder="ENTER PHONE"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Email Address</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors"
+                  placeholder="ENTER EMAIL"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Fitness Goal</label>
+                <div className="relative">
+                  <select name="goal" className="w-full bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
                     <option value="">SELECT PROTOCOL</option>
                     <option value="Mass Reduction">Mass Reduction</option>
                     <option value="Hypertrophy">Hypertrophy</option>
                     <option value="Baseline Optimization">Baseline Optimization</option>
                   </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[var(--text-secondary)]">▼</div>
                 </div>
+              </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Message</label>
-                  <textarea 
-                    name="message"
-                    rows={4}
-                    className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors resize-none"
-                    placeholder="ENTER MESSAGE (OPTIONAL)"
-                  />
-                </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Message</label>
+                <textarea 
+                  name="message"
+                  rows={4}
+                  className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors resize-none"
+                  placeholder="ENTER MESSAGE (OPTIONAL)"
+                />
+              </div>
 
-                <button 
-                  type="submit"
-                  className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-[var(--text-primary)] transition-colors flex items-center justify-center gap-2"
-                >
-                  SEND MESSAGE <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
+              <button 
+                type="submit"
+                disabled={submitted}
+                style={{
+                  backgroundColor: submitted ? 'var(--acid)' : undefined,
+                  color: submitted ? 'var(--bg)' : undefined,
+                }}
+                className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-[var(--text-primary)] hover:text-[var(--bg)] transition-colors flex items-center justify-center gap-2 disabled:opacity-100 disabled:cursor-not-allowed"
+              >
+                {submitted ? "[MESSAGE_SENT ✓]" : <>SEND MESSAGE <ArrowUpRight className="w-4 h-4" /></>}
+              </button>
+            </form>
           </div>
 
           {/* RIGHT: Info Rows */}
@@ -217,6 +226,26 @@ export default function ContactPage() {
                     Chat Now →
                   </a>
                 </div>
+              </div>
+
+              {/* Google Maps Embed */}
+              <div style={{
+                width: '100%',
+                height: '280px',
+                border: '1px solid var(--border)',
+                overflow: 'hidden',
+                marginTop: '32px',
+                position: 'relative',
+              }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.9!2d75.6358!3d15.4325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d7c4b2c3f4e5%3A0x0!2sKhan's%20Fitness%2C%20Hatalgeri%20Rd%2C%20Gadag-Betageri!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: 'var(--map-filter)' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
 
             </div>

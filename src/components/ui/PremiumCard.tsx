@@ -18,7 +18,7 @@ export function PremiumCard({ children, className = "", isOptimal = false }: Pre
       }}
       className={`relative flex flex-col p-8 border transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] ${
         isOptimal 
-          ? 'border-[2px] border-[var(--acid)] dark:bg-[#0D1500] bg-[#E8FF80]' 
+          ? 'plan-card-featured border-[2px] border-[var(--acid)] bg-[var(--acid-dim)]' 
           : 'border-[var(--border)] bg-[var(--surface)]'
       } ${className}`}
     >

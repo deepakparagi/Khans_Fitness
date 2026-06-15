@@ -11,74 +11,83 @@ const PLANS = [
     id: 'monthly',
     name: 'MONTHLY',
     duration: '[1 Month]',
-    price: '₹1,600',
+    price: 1600,
     originalPrice: null,
-    save: null,
-    isOptimal: false,
+    savings: null,
     features: [
       'Full gym access',
       'Basic fitness assessment',
       'Locker facility',
       'Trainer guidance',
-      'Cardio + weight training'
-    ]
+      'Cardio + weight training',
+    ],
+    badge: null,
+    featured: false,
   },
   {
     id: 'quarterly',
     name: 'QUARTERLY',
     duration: '[3 Months]',
-    price: '₹4,500',
-    originalPrice: '₹4,800',
-    save: 'SAVE 6%',
-    isOptimal: false,
+    price: 4500,
+    originalPrice: 4800,
+    savings: 'SAVE 6%',
     features: [
       'Full gym access',
       'Personalized workout plan',
       'Diet consultation',
+      'Locker facility',
+      'Trainer guidance',
       'Progress tracking',
-      'Locker facility'
-    ]
+    ],
+    badge: null,
+    featured: false,
   },
   {
     id: 'half-yearly',
     name: 'HALF-YEARLY',
     duration: '[6 Months]',
-    price: '₹7,500',
-    originalPrice: '₹9,600',
-    save: 'SAVE 22%',
-    isOptimal: true,
+    price: 8000,
+    originalPrice: 9600,
+    savings: 'SAVE 17%',
     features: [
       'Full gym access',
+      'Personalized workout plan',
       'Custom diet plan',
       'Personal trainer sessions',
       'Body composition analysis',
       'Priority support',
-      'Free merchandise'
-    ]
+      'Locker facility',
+      'Free merchandise',
+    ],
+    badge: '[OPTIMAL_CHOICE]',
+    featured: true,
   },
   {
     id: 'annual',
     name: 'ANNUAL',
     duration: '[12 Months]',
-    price: '₹14,000',
-    originalPrice: '₹19,200',
-    save: 'SAVE 27%',
-    isOptimal: false,
+    price: 14000,
+    originalPrice: 19200,
+    savings: 'SAVE 27%',
     features: [
+      'Full gym access',
       'Dedicated personal trainer',
       'Monthly body analysis',
       'Custom diet & workout plans',
       'Guest passes (2/month)',
       'Recovery zone access',
-      'Free merchandise'
-    ]
-  }
+      'Free merchandise',
+      'Priority support',
+    ],
+    badge: null,
+    featured: false,
+  },
 ];
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Membership Protocols | Khan's Fitness Gadag-Betageri",
+  title: "Membership Plans | Khan's Fitness Gadag",
   description: "Explore our membership tiers. From monthly to annual plans, select the protocol that fits your performance goals. Couple packages available.",
 };
 
@@ -94,7 +103,7 @@ export default function PlansPage() {
               src="/images/hero/3139894.jpg"
               alt="Plans & Pricing"
               fill
-              className="object-cover opacity-30 grayscale transition-opacity duration-300"
+              className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
               quality={90}
               priority
             />
@@ -104,7 +113,7 @@ export default function PlansPage() {
         
         {/* Header */}
         <div className="relative z-10 mb-16 flex flex-col items-center text-center">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-3 py-1 inline-block">
+          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [SYS_INF: MEMBERSHIP_TIERS]
           </div>
           <TextReveal stagger={0.15} className="items-center">
@@ -143,12 +152,12 @@ export default function PlansPage() {
             {PLANS.map((plan) => (
               <PremiumCard 
                 key={plan.id}
-                isOptimal={plan.isOptimal}
+                isOptimal={plan.featured}
                 className="h-full"
               >
-                {plan.isOptimal && (
+                {plan.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--acid)] text-[var(--bg)] font-mono text-[10px] uppercase tracking-widest px-3 py-1 whitespace-nowrap">
-                  [OPTIMAL_CHOICE]
+                  {plan.badge}
                 </div>
               )}
 
@@ -161,16 +170,21 @@ export default function PlansPage() {
                 </div>
                 
                 <div className="mt-6 flex flex-col">
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-bebas text-[48px] leading-none text-[var(--acid)]">{plan.price}</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-sans text-[24px] text-[var(--acid)] font-light select-none">
+                      ₹
+                    </span>
+                    <span className="font-bebas text-[48px] leading-none text-[var(--acid)]">
+                      {plan.price.toLocaleString('en-IN')}
+                    </span>
                   </div>
                   {plan.originalPrice && (
-                    <div className="flex items-center gap-3 mt-2">
+                    <div className="flex flex-wrap items-center gap-3 mt-2">
                       <span className="font-mono text-[12px] text-[var(--text-secondary)] line-through decoration-[var(--red)] decoration-2">
-                        {plan.originalPrice}
+                        ₹{plan.originalPrice.toLocaleString('en-IN')}
                       </span>
-                      <span className="font-mono text-[10px] text-[var(--bg)] bg-[var(--acid)] px-2 py-0.5 font-bold tracking-widest">
-                        {plan.save}
+                      <span className="font-mono text-[10px] text-white bg-[var(--red)] px-2 py-0.5 font-bold tracking-widest">
+                        {plan.savings}
                       </span>
                     </div>
                   )}

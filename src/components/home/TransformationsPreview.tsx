@@ -60,7 +60,7 @@ export function TransformationsPreview() {
                 </div>
                 
                 <div className="flex flex-col items-center mt-6">
-                  <div className="font-bebas text-[52px] text-[#333] line-through leading-none">
+                  <div className="font-bebas text-[52px] text-[var(--text-muted)] line-through leading-none">
                     {tf.startWeight}kg
                   </div>
                   
@@ -77,7 +77,7 @@ export function TransformationsPreview() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-4 right-4 font-mono text-[10px] bg-[var(--acid)] text-[#080808] px-2 py-1 uppercase tracking-widest">
+                <div className="absolute bottom-4 right-4 font-mono text-[10px] bg-[var(--acid)] text-[var(--bg)] px-2 py-1 uppercase tracking-widest">
                   [STATE: OPTIMAL]
                 </div>
               </div>

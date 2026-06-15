@@ -191,7 +191,7 @@ The number of meals in the array MUST exactly match the user's requested meals p
               </div>
             </div>
             
-            <button disabled={generating} className="bg-[var(--acid)] text-[#080808] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
+            <button disabled={generating} className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
               {generating ? '[CALCULATING_MACROS...]' : 'GENERATE PROTOCOL →'}
             </button>
           </form>

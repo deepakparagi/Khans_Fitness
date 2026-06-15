@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Khan's Fitness Gadag-Betageri",
+  title: "About Khan's Fitness | Gadag-Betageri Unisex Gym",
   description: "Gadag-Betageri's premier unisex training facility since 2015. Transform your body with personalized programs, expert trainers, and top-notch equipment.",
 };
 
@@ -34,10 +34,10 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/hero/4722384.jpg"
+            src="/images/hero/about_page_hero.png"
             alt="About Khan's Fitness"
             fill
-            className="object-cover opacity-30 grayscale transition-opacity duration-300"
+            className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
             quality={90}
             priority
           />
@@ -45,7 +45,7 @@ export default function AboutPage() {
         </div>
         
         <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-4 py-1.5 bg-black/40 backdrop-blur-sm">
+          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] px-4 py-1.5 bg-[var(--acid-dim)] backdrop-blur-sm">
             [SYS_INF: CORE_CAPABILITIES]
           </div>
           
@@ -116,7 +116,7 @@ export default function AboutPage() {
           {FEATURES.map((feature) => (
             <div 
               key={feature.id} 
-              className="group relative flex flex-col md:flex-row md:items-center justify-between border-b border-[var(--border)] p-6 lg:p-8 overflow-hidden transition-colors"
+              className="group relative flex flex-col md:flex-row md:items-center justify-between border-b border-[var(--border)] p-6 lg:p-8 overflow-hidden transition-colors bg-transparent"
             >
               <div className="absolute inset-0 bg-[var(--acid)] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] z-0" />
               

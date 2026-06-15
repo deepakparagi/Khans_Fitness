@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-const Hero3D = dynamic(() => import('./Hero3D'), { ssr: false });
+import Image from 'next/image';
 
 export function HeroSection() {
   const headingRef = useRef<HTMLDivElement>(null);
@@ -34,9 +34,17 @@ export function HeroSection() {
   return (
     <section className="relative w-full h-[100svh] overflow-hidden flex flex-col pt-[64px]">
       
-      {/* 3D Background */}
-      <div className="absolute inset-0 w-full h-full z-0 opacity-60 pointer-events-none">
-        <Hero3D />
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <img 
+          src="/images/hero/homepage_hero.png" 
+          alt="Khan's Fitness Gym" 
+          className="w-full h-full object-cover opacity-100"
+        />
+        <div 
+          className="absolute inset-0 bg-[var(--bg)] transition-opacity duration-300 pointer-events-none" 
+          style={{ opacity: 'var(--hero-overlay-opacity, 0.82)' }} 
+        />
       </div>
 
       {/* Main Content */}
@@ -44,9 +52,9 @@ export function HeroSection() {
         
         {/* Top Indicators (Moved inline to prevent overlap) */}
         <div className="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between w-full mb-8 lg:mb-10 gap-2 lg:gap-0">
-          <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] md:text-[10px] lg:text-[11px] tracking-widest text-[var(--text-primary)] uppercase">
+          <div className="flex flex-nowrap items-center gap-2 font-mono text-[9px] md:text-[10px] lg:text-[11px] tracking-widest text-[var(--text-primary)] uppercase w-full overflow-hidden text-ellipsis whitespace-nowrap">
             <div className="w-1.5 h-1.5 rounded-full bg-[var(--acid)] animate-pulse shrink-0" />
-            <span>[SYS: ONLINE] [LOC: GADAG-BETAGERI, KARNATAKA] [RTG: 4.7/5] [EST: 2015]</span>
+            <span className="truncate">[SYS: ONLINE] [LOC: GADAG-BETAGERI, KARNATAKA] [RTG: 4.7/5] [EST: 2015]</span>
           </div>
           <div className="font-mono text-[9px] md:text-[10px] lg:text-[11px] tracking-widest text-[var(--text-muted)] uppercase">
             15.4325° N, 75.6358° E
@@ -54,7 +62,15 @@ export function HeroSection() {
         </div>
 
         {/* Main Heading */}
-        <div ref={headingRef} className="flex flex-col font-bebas text-[clamp(50px,14vw,90px)] md:text-[clamp(60px,9vw,110px)] xl:text-[120px] leading-[0.85] tracking-[-0.02em] text-left">
+        <div 
+          ref={headingRef} 
+          style={{
+            lineHeight: '0.85',
+            letterSpacing: '-0.03em',
+            fontWeight: '400',
+          }}
+          className="flex flex-col font-bebas text-[clamp(64px,17vw,100px)] md:text-[clamp(100px,13.5vw,180px)] text-left"
+        >
           <div className="overflow-hidden pt-4 -mt-4 pb-2">
             <motion.div
               initial={{ y: '120px', opacity: 0 }}
@@ -123,13 +139,13 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-6 sm:gap-8 mt-6 lg:mt-6 w-full max-w-[600px]"
+          className="grid grid-cols-2 md:flex flex-wrap items-center gap-x-4 gap-y-6 md:gap-8 mt-6 lg:mt-6 w-full max-w-[600px]"
         >
           <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">500+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[ACTIVE MEMBERS]</span>
           </div>
-          <div className="hidden sm:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
+          <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">4.7★</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[GOOGLE RATING]</span>
@@ -139,7 +155,7 @@ export function HeroSection() {
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">6+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[EXPERT TRAINERS]</span>
           </div>
-          <div className="hidden lg:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
+          <div className="hidden md:block w-[1px] h-6 md:h-8 bg-[var(--border)]" />
           <div onClick={() => router.push('/contact')} className="flex flex-col gap-1 flex-1 cursor-pointer hover:opacity-70 transition-opacity">
             <span className="font-bebas text-[clamp(32px,8vw,48px)] md:text-[clamp(24px,3vw,36px)] text-[var(--acid)] leading-none">10+</span>
             <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] uppercase">[YEARS OF EXCELLENCE]</span>
@@ -148,7 +164,7 @@ export function HeroSection() {
       </div>
 
       {/* Marquee Strip */}
-      <div className="absolute bottom-0 left-0 w-full border-t border-[var(--border)] py-3 bg-[var(--bg)] overflow-hidden whitespace-nowrap group z-20">
+      <div className="marquee-strip absolute bottom-0 left-0 w-full border-t border-[var(--border)] py-3 bg-[var(--bg)] overflow-hidden whitespace-nowrap group z-20">
         <div className="inline-block animate-[marquee_25s_linear_infinite] group-hover:[animation-play-state:paused]">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest mx-4">

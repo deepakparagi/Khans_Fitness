@@ -25,64 +25,78 @@
 }
 
 @layer base {
-  /* ── DEFAULT = DARK ── */
-  :root,
-  [data-theme="dark"] {
-    --bg:           #080808;
-    --bg2:          #0D0D0D;
-    --surface:      #111111;
-    --surface2:     #1A1A1A;
-    --surface3:     #222222;
-    --border:       #1A1A1A;
-    --border2:      #2A2A2A;
-    --acid:         #CCFF00;
-    --acid-dim:     rgba(204,255,0,0.08);
-    --acid-border:  rgba(204,255,0,0.25);
-    --red:          #FF2D2D;
+  :root, [data-theme="dark"] {
+    --bg: #080808;
+    --bg2: #0D0D0D;
+    --surface: #111111;
+    --surface2: #1A1A1A;
+    --surface3: #222222;
+    --border: #222222;
+    --border2: #2A2A2A;
+    --acid: #CCFF00;
+    --acid-dim: rgba(204,255,0,0.06);
+    --acid-border: rgba(204,255,0,0.2);
+    --red: #FF2D2D;
     --text-primary: #F0F0F0;
-    --text-secondary: #888888;
-    --text-muted:   #444444;
-    --nav-bg:       rgba(8,8,8,0.92);
-    --overlay:      rgba(8,8,8,0.82);
-    --card-bg:      #111111;
-    --input-bg:     #111111;
-    --marquee-bg:   #080808;
-    --stripe-bg:    #CCFF00;
-    --stripe-text:  #080808;
+    --text-secondary: #777777;
+    --text-muted: #444444;
+    --nav-bg: rgba(8,8,8,0.95);
+    --overlay: rgba(8,8,8,0.80);
+    --card-bg: #111111;
+    --input-bg: #111111;
+    --tag-bg: transparent;
+    --tag-border: #2A2A2A;
+    --tag-text: #555555;
+    --stripe-bg: #CCFF00;
+    --stripe-text: #080808;
+    --marquee-bg: #080808;
+    --marquee-text: #333333;
+    --initials-bg: #CCFF00;
+    --initials-text: #080808;
+    --map-filter: grayscale(100%) invert(92%) contrast(83%);
+    --hero-overlay-opacity: 0;
+    --hero-img-opacity: 0.3;
   }
 
-  /* ── LIGHT MODE ── */
   [data-theme="light"] {
-    --bg:           #F2F2EE;
-    --bg2:          #EBEBE6;
-    --surface:      #FFFFFF;
-    --surface2:     #E8E8E3;
-    --surface3:     #DDDDD8;
-    --border:       #D0D0CA;
-    --border2:      #C0C0BA;
-    --acid:         #6B7A00;
-    --acid-dim:     rgba(107,122,0,0.08);
-    --acid-border:  rgba(107,122,0,0.3);
-    --red:          #CC1A1A;
+    --bg: #F0EFE9;
+    --bg2: #E8E7E1;
+    --surface: #FFFFFF;
+    --surface2: #EAEAE4;
+    --surface3: #DDDDD7;
+    --border: #CECEC8;
+    --border2: #BBBBB5;
+    --acid: #5C6B00;
+    --acid-dim: rgba(92,107,0,0.07);
+    --acid-border: rgba(92,107,0,0.25);
+    --red: #C41A1A;
     --text-primary: #0A0A0A;
     --text-secondary: #555555;
-    --text-muted:   #999999;
-    --nav-bg:       rgba(242,242,238,0.94);
-    --overlay:      rgba(242,242,238,0.80);
-    --card-bg:      #FFFFFF;
-    --input-bg:     #FFFFFF;
-    --marquee-bg:   #F2F2EE;
-    --stripe-bg:    #0A0A0A;
-    --stripe-text:  #CCFF00;
+    --text-muted: #999999;
+    --nav-bg: rgba(240,239,233,0.96);
+    --overlay: rgba(240,239,233,0.78);
+    --card-bg: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --tag-bg: transparent;
+    --tag-border: #CECEC8;
+    --tag-text: #888888;
+    --stripe-bg: #0A0A0A;
+    --stripe-text: #CCFF00;
+    --marquee-bg: #F0EFE9;
+    --marquee-text: #BBBBBB;
+    --initials-bg: #0A0A0A;
+    --initials-text: #CCFF00;
+    --map-filter: grayscale(80%) contrast(90%);
+    --hero-overlay-opacity: 0.45;
+    --hero-img-opacity: 0.65;
   }
 
-  /* ── BASE RESETS ── */
   * {
-    transition: background-color 0.25s ease, color 0.2s ease,
-                border-color 0.2s ease, fill 0.2s ease;
+    transition: background-color 0.3s ease, color 0.25s ease,
+                border-color 0.25s ease;
   }
-  /* Never transition these — breaks animations */
-  canvas, [data-no-transition], .gsap-marker-start,
+  canvas, .no-transition, [data-gsap],
+  .framer-motion-element, [data-no-transition], .gsap-marker-start,
   .gsap-marker-end, [data-framer-motion] {
     transition: none !important;
   }
@@ -119,5 +133,56 @@
   .theme-toggle-btn:hover svg {
     color: var(--acid) !important;
     stroke: var(--acid) !important;
+  }
+
+  @keyframes whatsapp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  .whatsapp-btn { animation: whatsapp-pulse 2.5s infinite; }
+
+  [data-theme="light"] .service-row:hover {
+    background: var(--acid);
+    color: var(--bg);
+  }
+
+  [data-theme="light"] .trainer-initials-block {
+    background: var(--initials-bg);
+    color: var(--initials-text);
+  }
+
+  [data-theme="light"] .plan-card-featured {
+    background: rgba(92,107,0,0.08);
+    border-color: var(--acid);
+  }
+
+  .service-sticky-image {
+    filter: brightness(0.7);
+  }
+  [data-theme="light"] .service-sticky-image {
+    filter: brightness(0.9) !important;
+  }
+
+  [data-theme="light"] .marquee-strip {
+    background: var(--marquee-bg);
+    border-color: var(--border);
+  }
+
+  [data-theme="light"] input,
+  [data-theme="light"] textarea,
+  [data-theme="light"] select {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+
+  [data-theme="light"] input::placeholder,
+  [data-theme="light"] textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .hero-bg-image {
+    opacity: var(--hero-img-opacity, 0.3) !important;
   }
 }

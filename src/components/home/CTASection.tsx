@@ -17,7 +17,7 @@ export function CTASection() {
         quality={90}
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[var(--overlay)] dark:bg-[var(--bg)]/88 bg-[#F5F5F0]/85 z-[-1] transition-colors duration-300" />
+      <div className="absolute inset-0 bg-[var(--overlay)] z-[-1] transition-colors duration-300" />
 
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
         

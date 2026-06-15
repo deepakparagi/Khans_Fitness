@@ -32,7 +32,7 @@ export function InitialLoader() {
     <AnimatePresence>
       {isLoading && (
         <motion.div 
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#080808] text-[var(--acid)]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--bg)] text-[var(--acid)]"
           initial={{ y: 0 }}
           exit={{ y: '-100%', transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
         >
@@ -42,7 +42,7 @@ export function InitialLoader() {
               <span className="animate-pulse">BOOTING...</span>
             </div>
             
-            <div className="font-bebas text-[clamp(40px,8vw,70px)] leading-[0.85] text-center tracking-[-0.02em] w-full text-white">
+            <div className="font-bebas text-[clamp(40px,8vw,70px)] leading-[0.85] text-center tracking-[-0.02em] w-full text-[var(--text-primary)]">
               <motion.div
                 initial={{ clipPath: 'inset(0 100% 0 0)' }}
                 animate={{ clipPath: 'inset(0 0% 0 0)' }}
@@ -54,7 +54,7 @@ export function InitialLoader() {
               </motion.div>
             </div>
 
-            <div className="w-full h-[2px] bg-[#222] relative overflow-hidden">
+            <div className="w-full h-[2px] bg-[var(--border)] relative overflow-hidden">
               <motion.div 
                 className="absolute inset-y-0 left-0 bg-[var(--acid)]"
                 initial={{ width: '0%' }}

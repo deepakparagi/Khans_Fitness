@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Real Transformations | Khan's Fitness Gadag-Betageri",
+  title: "Real Transformations | Khan's Fitness",
   description: "See the real results from our members at Khan's Fitness. Proven weight loss and muscle gain transformations driven by our expert trainers and data-driven protocols.",
 };
 
@@ -67,24 +67,24 @@ export default function TransformationsPage() {
             src="/images/hero/4722374.jpg"
             alt="Real Transformations"
             fill
-            className="object-cover opacity-30 grayscale transition-opacity duration-300"
+            className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
             quality={90}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
         </div>
         
-        <div className="relative z-10 flex flex-col items-center text-center px-6">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-3 py-1 inline-block">
+        <div className="relative z-10 flex flex-col items-start text-left px-6">
+          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [SYS_INF: PROTOCOL_RESULTS]
           </div>
-          <TextReveal stagger={0.15} className="items-center">
-            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-center drop-shadow-2xl">
+          <TextReveal stagger={0.15} className="items-start">
+            <h1 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col items-start drop-shadow-2xl">
               <span className="text-[var(--text-primary)]">REAL</span>
               <span className="text-[var(--acid)]">TRANSFORMATIONS</span>
             </h1>
           </TextReveal>
-          <p className="font-inter text-[var(--text-secondary)] mt-8 max-w-xl text-center">
+          <p className="font-inter text-[var(--text-secondary)] mt-8 max-w-xl text-left">
             These are real members who executed the protocol. Their data proves the efficacy of our brutalist optimization system.
           </p>
         </div>

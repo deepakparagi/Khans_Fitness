@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Human Optimization Coaches | Khan's Fitness Gadag-Betageri",
+  title: "Expert Trainers | Khan's Fitness Gadag",
   description: "Meet the elite trainers at Khan's Fitness. Featuring Khan Sir, Sonu Sir, and our team of expert coaches in Gadag-Betageri.",
 };
 
@@ -65,7 +65,7 @@ export default function TrainersPage() {
             src="/images/hero/4661155.jpg"
             alt="Our Trainers"
             fill
-            className="object-cover opacity-30 grayscale transition-opacity duration-300"
+            className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
             quality={90}
             priority
           />
@@ -74,7 +74,7 @@ export default function TrainersPage() {
         
         {/* Header */}
         <div className="relative z-10 mb-16 flex flex-col items-center text-center">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-3 py-1 inline-block">
+          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [SYS_INF: OPTIMIZATION_TEAM]
           </div>
           <TextReveal stagger={0.15} className="items-center">
@@ -100,15 +100,15 @@ export default function TrainersPage() {
         </div>
 
         {/* 4-Col Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {TRAINERS.map((trainer, i) => (
             <div 
               key={i}
               className="flex flex-col border border-[var(--border)] group hover:border-[var(--acid)] transition-colors duration-300"
             >
               {/* Top Half: Initials Block */}
-              <div className="w-full aspect-square bg-[var(--acid)] flex items-center justify-center overflow-hidden border-b border-[var(--border)]">
-                <span className="font-bebas text-[120px] text-[#080808] dark:text-[#080808] text-[var(--text-primary)] leading-none transform transition-transform duration-500 group-hover:scale-105">
+              <div className="trainer-initials-block w-full aspect-square bg-[var(--initials-bg)] flex items-center justify-center overflow-hidden border-b border-[var(--border)]">
+                <span className="font-bebas text-[120px] text-[var(--initials-text)] leading-none transform transition-transform duration-500 group-hover:scale-105">
                   {trainer.initials}
                 </span>
               </div>

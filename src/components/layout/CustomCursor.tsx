@@ -99,7 +99,7 @@ export function CustomCursor() {
   }, []);
 
   // Determine circle classes based on state
-  let circleSize = 'w-[48px] h-[48px] border border-[rgba(204,255,0,0.5)] bg-transparent';
+  let circleSize = 'w-[48px] h-[48px] border border-[var(--acid-border)] bg-transparent';
   let dotVisibility = 'opacity-100';
 
   if (isHoveringMagnetic) {

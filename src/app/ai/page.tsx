@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Fitness Lab | Khan's Fitness Gadag-Betageri",
+  title: "AI Fitness Lab | Khan's Fitness",
   description: "Cutting-edge AI tools to optimize your fitness journey. Generate workouts, plan your diet, calculate BMI, and chat with our AI coach at Khan's Fitness.",
 };
 
@@ -63,7 +63,7 @@ export default function AIHubPage() {
             src="/images/hero/4722389.jpg"
             alt="AI Fitness Lab"
             fill
-            className="object-cover opacity-30 grayscale transition-opacity duration-300"
+            className="object-cover grayscale transition-opacity duration-300 hero-bg-image"
             quality={90}
             priority
           />
@@ -72,7 +72,7 @@ export default function AIHubPage() {
 
         {/* Header Content */}
         <div className="relative z-10 flex flex-col items-center text-center">
-          <div className="flex items-center gap-2 font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid)] px-4 py-1.5 bg-black/40 backdrop-blur-sm">
+          <div className="flex items-center gap-2 font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-4 py-1.5 backdrop-blur-sm">
             <Cpu className="w-4 h-4" />
             [AI-POWERED]
           </div>
@@ -100,7 +100,7 @@ export default function AIHubPage() {
               <Link
                 key={tool.title}
                 href={tool.path}
-                className="group relative overflow-hidden flex flex-col border border-[var(--border)] bg-[var(--surface)] p-9 hover:border-[var(--acid)] transition-colors duration-300 min-h-[280px]"
+                className="group relative overflow-hidden flex flex-col border border-[var(--border)] bg-[var(--surface)] p-9 hover:border-[var(--acid)] hover:bg-[var(--acid-dim)] transition-colors duration-300 min-h-[280px]"
               >
                 {/* Spectral Gradient Background */}
                 <div className="absolute inset-0 z-0 bg-[linear-gradient(to_bottom_right,#ef4444,#f97316,#eab308,#22c55e,#3b82f6,#6366f1,#a855f7)] opacity-[0.03] group-hover:opacity-[0.12] transition-opacity duration-500" />
@@ -117,8 +117,8 @@ export default function AIHubPage() {
                   </p>
 
                   <div className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="font-mono text-[12px] text-[var(--acid)] uppercase tracking-widest">
-                      Try Now →
+                    <span className="font-mono text-[11px] text-[var(--acid)] uppercase tracking-widest">
+                      → LAUNCH
                     </span>
                   </div>
                 </div>

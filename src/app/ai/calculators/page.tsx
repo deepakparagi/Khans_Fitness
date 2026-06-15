@@ -25,7 +25,7 @@ export default function CalculatorsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {/* Card 1 */}
-          <Link href="/ai/bmi" className="group flex flex-col border border-[var(--border)] bg-[var(--surface)] p-9 hover:bg-[#0D1500] hover:border-[var(--acid)] transition-colors min-h-[240px]">
+          <Link href="/ai/bmi" className="group flex flex-col border border-[var(--border)] bg-[var(--surface)] p-9 hover:bg-[var(--acid-dim)] hover:border-[var(--acid)] transition-colors min-h-[240px]">
             <h3 className="font-bebas text-[32px] text-[var(--text-primary)] uppercase mb-3 group-hover:text-[var(--acid)] transition-colors">BMI & BMR</h3>
             <p className="font-inter text-[14px] text-[var(--text-secondary)] mb-8 leading-relaxed">Calculate exact Body Mass Index and basal metabolic rate.</p>
             <span className="mt-auto font-mono text-[12px] text-[var(--acid)] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">ACCESS MODULE →</span>

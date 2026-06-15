@@ -94,7 +94,7 @@ export default function ChatPage() {
               value={input}
               onChange={e => setInput(e.target.value)}
               disabled={loading}
-              className="flex-1 bg-transparent border-b border-[#333] focus:border-[var(--acid)] font-mono text-[12px] text-[var(--text-primary)] px-2 py-3 focus:outline-none transition-colors disabled:opacity-50"
+              className="flex-1 bg-transparent border-b border-[var(--border)] focus:border-[var(--acid)] font-mono text-[12px] text-[var(--text-primary)] px-2 py-3 focus:outline-none transition-colors disabled:opacity-50"
               placeholder={loading ? "PROCESSING..." : "ENTER DIRECTIVE..."}
             />
             <button 

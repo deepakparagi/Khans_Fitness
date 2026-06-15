@@ -107,7 +107,7 @@ Generate exactly ${days} days of workouts. Tailor the exercises to a ${level} le
               </div>
             </div>
             
-            <button disabled={generating} className="bg-[var(--acid)] text-[#080808] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
+            <button disabled={generating} className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[12px] font-bold uppercase tracking-widest py-5 mt-4 hover:bg-white transition-colors disabled:opacity-50">
               {generating ? '[GENERATING_PROTOCOL...]' : 'GENERATE WORKOUT →'}
             </button>
           </form>
@@ -132,7 +132,7 @@ Generate exactly ${days} days of workouts. Tailor the exercises to a ${level} le
                         <span className="font-mono text-[11px] text-[var(--acid)]">DAY {day.day}</span>
                         <span className="font-grotesk font-bold text-[18px] text-[var(--text-primary)] uppercase">{day.name}</span>
                       </div>
-                      <span className="font-mono text-[10px] text-[var(--text-secondary)] border border-[#333] px-2 py-1">{day.focus}</span>
+                      <span className="font-mono text-[10px] text-[var(--text-secondary)] border border-[var(--border)] px-2 py-1">{day.focus}</span>
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

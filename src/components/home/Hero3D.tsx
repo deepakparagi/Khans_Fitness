@@ -1,11 +1,14 @@
 'use client';
 /* eslint-disable react-hooks/purity */
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 import { useTheme } from '@/components/ThemeProvider';
+
+let particleMaterial: THREE.PointsMaterial | null = null;
+let ringMaterial: THREE.MeshBasicMaterial | null = null;
 
 function ParticleField({ theme }: { theme: string }) {
   const ref = useRef<THREE.Points>(null);
@@ -33,6 +36,7 @@ function ParticleField({ theme }: { theme: string }) {
     <group rotation={[0, 0, Math.PI / 4]}>
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
+          ref={(el) => { if (el) particleMaterial = el as any }}
           transparent
           color={theme === 'light' ? '#333333' : '#ffffff'}
           size={0.02}
@@ -258,8 +262,58 @@ function MedicineBall3D({ theme }: { theme: string }) {
   );
 }
 
+function FloatingRing() {
+  const ringRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (ringRef.current) {
+      ringRef.current.rotation.x = state.clock.elapsedTime * 0.15;
+      ringRef.current.rotation.z = state.clock.elapsedTime * 0.1;
+      ringRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.3;
+    }
+  });
+
+  return (
+    <mesh ref={ringRef} position={[0, 0, 0]}>
+      <torusGeometry args={[2.5, 0.01, 16, 100]} />
+      <meshBasicMaterial 
+        ref={(el) => { if (el) ringMaterial = el as any }}
+        color="#D4A843" 
+        transparent 
+        opacity={0.15} 
+      />
+    </mesh>
+  );
+}
+
 export default function Hero3D() {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    const updateColors = () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light'
+      if (particleMaterial) {
+        particleMaterial.color.setHex(isLight ? 0x333333 : 0xFFFFFF)
+        particleMaterial.opacity = isLight ? 0.12 : 0.20
+      }
+      if (ringMaterial) {
+        ringMaterial.color.setHex(isLight ? 0x5C6B00 : 0xCCFF00)
+        ringMaterial.opacity = isLight ? 0.3 : 0.4
+      }
+    }
+
+    updateColors() // run on mount
+
+    const observer = new MutationObserver(updateColors)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
@@ -267,6 +321,7 @@ export default function Hero3D() {
       <directionalLight position={[10, 10, 5]} intensity={theme === 'light' ? 1.5 : 1.3} />
       <pointLight position={[-10, -10, -5]} intensity={0.5} color={theme === 'light' ? '#8A9900' : '#CCFF00'} />
       <ParticleField theme={theme} />
+      <FloatingRing />
       <Dumbbell3D theme={theme} />
       <Kettlebell3D theme={theme} />
       <WeightPlate3D theme={theme} />
