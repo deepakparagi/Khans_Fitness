@@ -3,7 +3,7 @@
 export function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/919964591846?text=Hi%20Khan's%20Fitness!%20I%20want%20to%20book%20a%20free%20trial."
+      href="https://wa.me/919964591846?text=Hi%20Khan's%20Fitness!%20I%20want%20to%20inquire%20about%20memberships."
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-btn"

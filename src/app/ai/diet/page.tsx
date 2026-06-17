@@ -5,6 +5,7 @@ import { TextReveal } from '@/components/ui/TextReveal';
 import { UtensilsCrossed } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import { generateAIResponse } from '@/app/actions/ai';
+import { safeParseJSON } from '@/lib/utils';
 
 type MealPlan = {
   title: string;
@@ -22,6 +23,12 @@ export default function DietPlannerPage() {
     const objective = formData.get('objective') as string;
     const preference = formData.get('preference') as string;
     const mealsDay = formData.get('mealsDay') as string;
+    const gender = formData.get('gender') as string;
+    const age = formData.get('age') as string;
+    const height = formData.get('height') as string;
+    const weight = formData.get('weight') as string;
+    const activity = formData.get('activity') as string;
+    const allergies = (formData.get('allergies') as string) || 'None';
     
     setGenerating(true);
     
@@ -37,13 +44,23 @@ JSON Format required:
 }
 The number of meals in the array MUST exactly match the user's requested meals per day.`;
 
-      const userPrompt = `Objective: ${objective}. Dietary Preference: ${preference}. Meals per day: ${mealsDay}. Calculate and return the JSON protocol.`;
+      const userPrompt = `Biometric Profile:
+- Gender: ${gender}
+- Age: ${age} years old
+- Height: ${height} cm
+- Weight: ${weight} kg
+- Activity Level: ${activity}
+- Allergies/Exclusions: ${allergies}
+
+Nutritional Requirements:
+- Primary Objective: ${objective}
+- Dietary Preference: ${preference}
+- Meals per Day: ${mealsDay}
+
+Calculate and return the JSON protocol.`;
       
       const response = await generateAIResponse(userPrompt, systemPrompt);
-      
-      // Attempt to clean any potential markdown fences just in case
-      const cleanResponse = response.replace(/```json/i, '').replace(/```/g, '').trim();
-      const parsedPlan = JSON.parse(cleanResponse);
+      const parsedPlan = safeParseJSON(response);
       setPlan(parsedPlan);
     } catch (error) {
       console.error(error);
@@ -171,7 +188,54 @@ The number of meals in the array MUST exactly match the user's requested meals p
                 <option value="Maintenance">Maintenance</option>
               </select>
             </div>
-            
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Gender</label>
+                <select name="gender" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Age (years)</label>
+                <input required type="number" name="age" min="10" max="100" defaultValue="25" placeholder="25" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Height (cm)</label>
+                <input required type="number" name="height" placeholder="175" defaultValue="175" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Weight (kg)</label>
+                <input required type="number" name="weight" placeholder="70" defaultValue="70" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Activity Level</label>
+                <select name="activity" defaultValue="moderate" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none text-left w-full">
+                  <option value="sedentary">Sedentary (desk job)</option>
+                  <option value="light">Lightly Active</option>
+                  <option value="moderate">Moderately Active</option>
+                  <option value="active">Very Active</option>
+                  <option value="veryActive">Extra Active</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Meals/Day</label>
+                <select name="mealsDay" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                  <option value="3">3 Meals</option>
+                  <option value="4">4 Meals</option>
+                  <option value="5">5 Meals</option>
+                </select>
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Dietary Preference</label>
@@ -182,12 +246,8 @@ The number of meals in the array MUST exactly match the user's requested meals p
                 </select>
               </div>
               <div className="flex flex-col gap-2">
-                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Meals/Day</label>
-                <select name="mealsDay" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
-                  <option value="3">3 Meals</option>
-                  <option value="4">4 Meals</option>
-                  <option value="5">5 Meals</option>
-                </select>
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Allergies / Exclusions</label>
+                <input type="text" name="allergies" placeholder="e.g. Peanut, Lactose (or None)" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
               </div>
             </div>
             

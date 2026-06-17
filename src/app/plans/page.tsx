@@ -8,76 +8,39 @@ import Link from 'next/link';
 
 const PLANS = [
   {
-    id: 'monthly',
-    name: 'MONTHLY',
-    duration: '[1 Month]',
-    price: 1600,
-    originalPrice: null,
-    savings: null,
+    id: 'weight-loss',
+    name: 'Weight Loss Training',
     features: [
-      'Full gym access',
-      'Basic fitness assessment',
-      'Locker facility',
-      'Trainer guidance',
-      'Cardio + weight training',
-    ],
-    badge: null,
-    featured: false,
-  },
-  {
-    id: 'quarterly',
-    name: 'QUARTERLY',
-    duration: '[3 Months]',
-    price: 4500,
-    originalPrice: 4800,
-    savings: 'SAVE 6%',
-    features: [
-      'Full gym access',
-      'Personalized workout plan',
-      'Diet consultation',
-      'Locker facility',
-      'Trainer guidance',
+      'Expert trainer guidance',
+      'Weight loss focused workouts',
+      'Cardio training',
+      'Strength conditioning',
       'Progress tracking',
+      'Gym access',
     ],
-    badge: null,
-    featured: false,
-  },
-  {
-    id: 'half-yearly',
-    name: 'HALF-YEARLY',
-    duration: '[6 Months]',
-    price: 8000,
-    originalPrice: 9600,
-    savings: 'SAVE 17%',
-    features: [
-      'Full gym access',
-      'Personalized workout plan',
-      'Custom diet plan',
-      'Personal trainer sessions',
-      'Body composition analysis',
-      'Priority support',
-      'Locker facility',
-      'Free merchandise',
+    pricing: [
+      { label: 'New Admission', price: 1800 },
+      { label: 'Monthly', price: 1600 },
+      { label: '3 Months', price: 4500 },
     ],
-    badge: '[OPTIMAL_CHOICE]',
+    badge: 'Most Popular',
     featured: true,
   },
   {
-    id: 'annual',
-    name: 'ANNUAL',
-    duration: '[12 Months]',
-    price: 14000,
-    originalPrice: 19200,
-    savings: 'SAVE 27%',
+    id: 'weight-gain',
+    name: 'Weight Gain Training',
     features: [
-      'Full gym access',
-      'Dedicated personal trainer',
-      'Monthly body analysis',
-      'Custom diet & workout plans',
-      'Guest passes (2/month)',
-      'Recovery zone access',
-      'Free merchandise',
-      'Priority support',
+      'Muscle building programs',
+      'Strength training',
+      'Personalized workout guidance',
+      'Progressive overload training',
+      'Gym access',
+      'Trainer support',
+    ],
+    pricing: [
+      { label: 'New Admission', price: 1200 },
+      { label: 'Monthly', price: 1100 },
+      { label: '3 Months', price: 3000 },
     ],
     badge: null,
     featured: false,
@@ -146,9 +109,9 @@ export default function PlansPage() {
           </span>
         </div>
 
-        {/* 4-Col Plan Layout */}
+        {/* 2-Col Plan Layout */}
         <ScrollReveal yOffset={40}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {PLANS.map((plan) => (
               <PremiumCard 
                 key={plan.id}
@@ -162,32 +125,28 @@ export default function PlansPage() {
               )}
 
               <div className="mb-8 border-b border-[var(--border)] pb-8">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-grotesk font-bold text-[20px] text-[var(--text-primary)] uppercase tracking-wide">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-grotesk font-bold text-[22px] text-[var(--text-primary)] uppercase tracking-wide">
                     {plan.name}
                   </h3>
-                  <span className="font-mono text-[11px] text-[var(--text-secondary)]">{plan.duration}</span>
                 </div>
                 
-                <div className="mt-6 flex flex-col">
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-sans text-[24px] text-[var(--acid)] font-light select-none">
-                      ₹
-                    </span>
-                    <span className="font-bebas text-[48px] leading-none text-[var(--acid)]">
-                      {plan.price.toLocaleString('en-IN')}
-                    </span>
-                  </div>
-                  {plan.originalPrice && (
-                    <div className="flex flex-wrap items-center gap-3 mt-2">
-                      <span className="font-mono text-[12px] text-[var(--text-secondary)] line-through decoration-[var(--red)] decoration-2">
-                        ₹{plan.originalPrice.toLocaleString('en-IN')}
+                <div className="flex flex-col gap-4">
+                  {plan.pricing.map((p, idx) => (
+                    <div key={idx} className="flex items-center justify-between border-b border-[var(--border)]/30 border-dashed pb-2 last:border-b-0 last:pb-0">
+                      <span className="font-mono text-[12px] text-[var(--text-secondary)] uppercase tracking-wider">
+                        {p.label}
                       </span>
-                      <span className="font-mono text-[10px] text-white bg-[var(--red)] px-2 py-0.5 font-bold tracking-widest">
-                        {plan.savings}
-                      </span>
+                      <div className="flex items-baseline gap-0.5">
+                        <span className="font-sans text-[18px] text-[var(--acid)] font-light select-none">
+                          ₹
+                        </span>
+                        <span className="font-bebas text-[32px] leading-none text-[var(--acid)]">
+                          {p.price.toLocaleString('en-IN')}
+                        </span>
+                      </div>
                     </div>
-                  )}
+                  ))}
                 </div>
               </div>
 
@@ -210,8 +169,25 @@ export default function PlansPage() {
         </div>
       </ScrollReveal>
 
+        {/* Disclaimer Section */}
+        <div className="mt-16 max-w-2xl mx-auto border border-[var(--border)] bg-[var(--surface)] p-6 relative">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--bg)] px-3 font-mono text-[10px] text-[var(--red)] uppercase tracking-widest whitespace-nowrap">
+            [SYS_ALERT: TERMS & CONDITIONS]
+          </div>
+          <ul className="space-y-3">
+            <li className="font-inter text-[13px] text-[var(--text-secondary)] flex items-start gap-3 leading-relaxed">
+              <span className="text-[var(--red)] font-mono select-none mt-0.5">•</span>
+              <span>Fees once paid are non-refundable and non-transferable.</span>
+            </li>
+            <li className="font-inter text-[13px] text-[var(--text-secondary)] flex items-start gap-3 leading-relaxed">
+              <span className="text-[var(--red)] font-mono select-none mt-0.5">•</span>
+              <span>Membership duration will not be extended for holidays, closures, or special circumstances.</span>
+            </li>
+          </ul>
+        </div>
+
         {/* Bottom Note */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <p className="font-mono text-[11px] text-[var(--text-muted)] tracking-widest uppercase">
             [SYS_NOTE: REGISTRATION REQUIRED · NO HIDDEN FEES · CANCEL ANYTIME · COUPLE PACKAGES AVAILABLE]
           </p>

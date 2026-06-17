@@ -3,8 +3,10 @@
 import { TextReveal } from '@/components/ui/TextReveal';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export function CTASection() {
+  const router = useRouter();
   return (
     <section className="relative w-full py-[100px] flex items-center justify-center overflow-hidden border-b border-[var(--border)]">
       
@@ -33,11 +35,14 @@ export function CTASection() {
         </TextReveal>
 
         <p className="font-inter font-normal text-[16px] text-[var(--text-secondary)] mt-8 mb-12 max-w-lg">
-          Stop guessing. Start executing. Our AI-powered human optimization facility is ready for your input. Secure your trial access now.
+          Stop guessing. Start executing. Our AI-powered human optimization facility is ready for your input. Initialize your membership protocol now.
         </p>
 
-        <MagneticButton className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[14px] font-bold uppercase tracking-widest px-[64px] py-[20px] hover:bg-[var(--text-primary)] transition-colors duration-300">
-          BOOK FREE TRIAL →
+        <MagneticButton 
+          onClick={() => router.push('/contact')}
+          className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[14px] font-bold uppercase tracking-widest px-[64px] py-[20px] hover:bg-[var(--text-primary)] transition-colors duration-300"
+        >
+          INITIALIZE PROTOCOL →
         </MagneticButton>
 
       </div>

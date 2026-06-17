@@ -51,3 +51,18 @@ export function formatDate(date: Date | string): string {
     year: "numeric",
   });
 }
+
+export function safeParseJSON(str: string): any {
+  // Remove <think>...</think> if present (e.g. reasoning models)
+  let clean = str.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+  
+  // Extract JSON structure between the first '{' and the last '}'
+  const start = clean.indexOf('{');
+  const end = clean.lastIndexOf('}');
+  
+  if (start !== -1 && end !== -1 && end > start) {
+    clean = clean.substring(start, end + 1);
+  }
+  
+  return JSON.parse(clean);
+}

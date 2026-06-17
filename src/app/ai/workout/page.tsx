@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Dumbbell, Cpu } from 'lucide-react';
 import { generateAIResponse } from '@/app/actions/ai';
+import { safeParseJSON } from '@/lib/utils';
 
 type WorkoutPlan = {
   title: string;
@@ -28,6 +29,12 @@ export default function WorkoutGeneratorPage() {
     const goal = formData.get('goal') as string;
     const level = formData.get('level') as string;
     const days = formData.get('days') as string;
+    const gender = formData.get('gender') as string;
+    const age = formData.get('age') as string;
+    const height = formData.get('height') as string;
+    const weight = formData.get('weight') as string;
+    const equipment = formData.get('equipment') as string;
+    const injuries = (formData.get('injuries') as string) || 'None';
 
     const systemPrompt = `You are the Khan Fitness AI Protocol Generator. Create a brutalist, highly effective workout plan.
 You must output ONLY valid JSON, with no markdown formatting or backticks around it. The JSON must perfectly match this structure:
@@ -44,12 +51,26 @@ You must output ONLY valid JSON, with no markdown formatting or backticks around
     }
   ]
 }
-Generate exactly ${days} days of workouts. Tailor the exercises to a ${level} level focused on ${goal}.`;
+Generate exactly ${days} days of workouts.`;
 
     try {
-      const response = await generateAIResponse(`Generate a ${days}-day ${level} ${goal} protocol.`, systemPrompt);
-      const jsonStr = response.replace(/```json/g, '').replace(/```/g, '').trim();
-      const parsedPlan = JSON.parse(jsonStr);
+      const userPrompt = `Biometric Profile:
+- Gender: ${gender}
+- Age: ${age} years old
+- Height: ${height} cm
+- Weight: ${weight} kg
+- Fitness Level: ${level}
+- Equipment Available: ${equipment}
+- Injuries/Limitations: ${injuries}
+
+Training Details:
+- Primary Goal: ${goal}
+- Workout Days per Week: ${days} days
+
+Tailor the exercises to their biometric profile, equipment constraints, and limitations, and return the JSON protocol.`;
+
+      const response = await generateAIResponse(userPrompt, systemPrompt);
+      const parsedPlan = safeParseJSON(response);
       setPlan(parsedPlan);
     } catch (error) {
       console.error('Failed to generate plan:', error);
@@ -87,7 +108,33 @@ Generate exactly ${days} days of workouts. Tailor the exercises to a ${level} le
                 <option value="fatloss">Fat Loss</option>
               </select>
             </div>
-            
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Gender</label>
+                <select name="gender" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Age (years)</label>
+                <input required type="number" name="age" min="10" max="100" defaultValue="25" placeholder="25" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Height (cm)</label>
+                <input required type="number" name="height" placeholder="175" defaultValue="175" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Weight (kg)</label>
+                <input required type="number" name="weight" placeholder="70" defaultValue="70" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Level</label>
@@ -104,6 +151,21 @@ Generate exactly ${days} days of workouts. Tailor the exercises to a ${level} le
                   <option value="4">4 Days</option>
                   <option value="5">5 Days</option>
                 </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Equipment Available</label>
+                <select name="equipment" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors appearance-none w-full">
+                  <option value="Full Gym">Full Gym Equipment</option>
+                  <option value="Dumbbells Only">Dumbbells / Home Gym</option>
+                  <option value="Bodyweight Only">Bodyweight Only</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Injuries / Limitations</label>
+                <input type="text" name="injuries" placeholder="e.g. Knee pain, lower back (or None)" className="bg-[var(--surface)] border border-[var(--border)] p-4 font-mono text-[12px] text-[var(--text-primary)] focus:outline-none focus:border-[var(--acid)] transition-colors" />
               </div>
             </div>
             

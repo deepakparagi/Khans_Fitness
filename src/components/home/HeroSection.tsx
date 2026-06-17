@@ -127,10 +127,10 @@ export function HeroSection() {
             INITIALIZE MEMBERSHIP →
           </MagneticButton>
           <MagneticButton 
-            onClick={() => router.push('/contact')}
+            onClick={() => router.push('/plans')}
             className="w-full md:w-auto border border-[var(--text-muted)] bg-transparent text-[var(--text-primary)] font-mono text-[11px] md:text-[12px] uppercase tracking-widest px-6 py-4 hover:border-[var(--acid)] transition-colors"
           >
-            EXECUTE TRIAL ▶
+            EXPLORE PLANS ▶
           </MagneticButton>
         </motion.div>
 

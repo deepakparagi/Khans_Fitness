@@ -67,7 +67,7 @@ export default function BMIPage() {
       } else {
         category = 'OBESE';
         color = '#FF2D2D';
-        recommendation = "Critical intervention required. Begin with 3x/week low-impact cardio. Create 500 kcal deficit. Book a free trial with Khan Sir immediately.";
+        recommendation = "Critical intervention required. Begin with 3x/week low-impact cardio. Create 500 kcal deficit. Consult with Khan Sir immediately.";
       }
 
       setBmiData({
