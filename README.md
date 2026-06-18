@@ -9,22 +9,6 @@ The application integrates advanced AI tools, personalized fitness calculators, 
 
 ---
 
-## Screenshots
-
-### Homepage
-*(Add Screenshot)*
-
-### AI Fitness Lab
-*(Add Screenshot)*
-
-### Membership Plans
-*(Add Screenshot)*
-
-### Trainer Showcase
-*(Add Screenshot)*
-
----
-
 ## Features
 
 - **Premium Modern UI/UX:** High-contrast brutalist typography balanced with luxury micro-animations and smooth transitions.
