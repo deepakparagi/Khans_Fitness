@@ -41,7 +41,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full h-[64px] z-[100] transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full h-[72px] z-[100] transition-all duration-300 ${
           isScrolled 
             ? 'bg-[var(--nav-bg)] backdrop-blur-md border-b border-[var(--border)]' 
             : 'bg-[var(--nav-bg)] lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-[var(--border)] lg:border-transparent'
@@ -53,7 +53,7 @@ export function Navbar() {
           <div className="flex-1 flex justify-start">
             <Link href="/" className="flex items-center group" data-cursor="magnetic">
               <Image 
-                src="/logo.png" 
+                src="/khans-fitness-official-logo-png.png" 
                 alt="Khan's Fitness Logo" 
                 width={160} 
                 height={50} 
@@ -75,10 +75,10 @@ export function Navbar() {
                     data-cursor-text="GO"
                     className="relative px-3 py-2 group overflow-hidden"
                   >
-                    {/* Hover background sweep */}
-                    <span className={`absolute inset-0 bg-[var(--acid)] transition-transform duration-300 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                    {/* Hover and Active background sweep */}
+                    <span className={`absolute inset-0 bg-[var(--acid)] transition-all duration-300 origin-left ${isActive ? 'scale-x-100 opacity-20' : 'scale-x-0 group-hover:scale-x-100'}`} />
                     
-                    <span className={`relative z-10 font-mono text-[11px] uppercase tracking-widest transition-colors duration-300 ${isActive ? 'text-[var(--bg)]' : 'text-[var(--text-primary)] group-hover:text-[var(--bg)]'}`}>
+                    <span className={`relative z-10 font-mono text-[11px] uppercase tracking-widest transition-colors duration-300 ${isActive ? 'text-[var(--acid)] font-semibold' : 'text-[var(--text-primary)] group-hover:text-[var(--bg)]'}`}>
                       [{link.label}]
                     </span>
                   </Link>

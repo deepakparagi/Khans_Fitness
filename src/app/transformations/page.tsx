@@ -60,7 +60,7 @@ export default function TransformationsPage() {
     <div className="w-full bg-[var(--bg)]">
       
       {/* Hero Section */}
-      <section className="relative mt-[64px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[calc(100svh-64px)] min-h-[calc(100svh-64px)] flex flex-col justify-center overflow-hidden">
+      <section className="relative mt-[72px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[calc(100svh-72px)] min-h-[calc(100svh-72px)] flex flex-col justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -71,11 +71,12 @@ export default function TransformationsPage() {
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--hero-overlay-bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/30 to-transparent" />
         </div>
         
         <div className="relative z-10 flex flex-col items-start text-left px-6">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
+          <div className="font-mono text-[11px] text-[var(--tag-text)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [SYS_INF: PROTOCOL_RESULTS]
           </div>
           <TextReveal stagger={0.15} className="items-start">

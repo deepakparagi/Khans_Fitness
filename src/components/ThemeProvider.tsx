@@ -15,10 +15,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('kf-theme') as Theme | null
-    const sys = window.matchMedia('(prefers-color-scheme:light)').matches
-      ? 'light' : 'dark'
-    const initial = stored ?? sys
+    const stored = localStorage.getItem('theme') as Theme | null
+    const initial = stored ?? 'dark'
     setTheme(initial)
     document.documentElement.setAttribute('data-theme', initial)
     setReady(true)
@@ -27,7 +25,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const toggle = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
-    localStorage.setItem('kf-theme', next)
+    localStorage.setItem('theme', next)
     document.documentElement.setAttribute('data-theme', next)
   }
 

@@ -25,15 +25,35 @@ export default function ChatPage() {
     e.preventDefault();
     if (!input.trim() || loading) return;
     
-    const userMessage = input;
+    const userMessage = input.trim();
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setInput('');
     setLoading(true);
     
+    // Instant client-side check for simple greetings to guide user metrics
+    const isGreeting = /^(hi|hello|hey|yo|greetings|start|hola|sup|chat|assistant|objective)(\s|[!.]|$)/i.test(userMessage);
+
+    if (isGreeting) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          role: 'system', 
+          content: 'ACKNOWLEDGED. PROVIDE YOUR CURRENT WEIGHT, HEIGHT, AND FITNESS GOAL. SPECIFY EXACT METRIC.'
+        }]);
+        setLoading(false);
+      }, 500);
+      return;
+    }
+    
     try {
-      const systemPrompt = "You are the 'Khan Fitness System Interface', a highly advanced, brutalist, no-nonsense AI fitness coach. You give direct, data-driven, and highly optimized fitness advice. Do not use pleasantries. Keep your responses incredibly concise. Use uppercase for emphasis. Sound like a futuristic military/fitness AI. CRITICAL: DO NOT use any markdown formatting, asterisks (*), hashtags (#), or any other special formatting characters. Format your response as plain text using standard line breaks, dashes (-), or uppercase text for structure.";
+      const systemPrompt = "You are the 'Khan Fitness System Interface', a highly advanced, brutalist, no-nonsense AI fitness coach. You give direct, data-driven, and highly optimized fitness advice. Do not use pleasantries. Keep your responses incredibly concise. Use uppercase for emphasis. Sound like a futuristic military/fitness AI. CRITICAL: DO NOT use any markdown formatting, asterisks (*), hashtags (#), or any other special formatting characters. Format your response as plain text using standard line breaks, dashes (-), or uppercase text for structure. RULE: IF THE USER HAS NOT YET SPECIFIED THEIR CURRENT WEIGHT, HEIGHT, AND FITNESS GOAL, YOU MUST NOT ANSWER ANY DETAILED QUESTIONS OR DESIGN PROGRAMS. INSTEAD, DEMAND THAT THEY PROVIDE THEIR WEIGHT, HEIGHT, AND FITNESS GOAL BEFORE PROCEEDING.";
       
-      const response = await generateAIResponse(userMessage, systemPrompt);
+      // Construct prompt with context history
+      const historyContext = messages
+        .map(msg => `${msg.role === 'user' ? 'USER' : 'SYSTEM'}: ${msg.content}`)
+        .join('\n');
+      const fullPrompt = `${historyContext}\nUSER: ${userMessage}`;
+
+      const response = await generateAIResponse(fullPrompt, systemPrompt);
       
       setMessages(prev => [...prev, { 
         role: 'system', 

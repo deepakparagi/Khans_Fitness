@@ -38,9 +38,8 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `
 (function(){
   try {
-    var t = localStorage.getItem('kf-theme');
-    var s = window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', t || s);
+    var theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
   } catch(e) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }

@@ -51,11 +51,51 @@ const AI_TOOLS = [
 ];
 
 export default function AIHubPage() {
+  // Generate procedural mesh grid wave dots (matching the reference 3D wave curvature)
+  interface MeshDot {
+    key: string;
+    cx: number;
+    cy: number;
+    r: number;
+    opacity: number;
+  }
+  const cols = 16;
+  const rows = 12;
+  const meshDots: MeshDot[] = [];
+  for (let c = 0; c < cols; c++) {
+    for (let r = 0; r < rows; r++) {
+      const pctX = c / (cols - 1);
+      const pctY = r / (rows - 1);
+      
+      const x = 30 + pctX * 340;
+      const y = 30 + pctY * 240;
+      
+      // Multi-sine 3D landscape contours
+      const phase = (pctX * 3.6) + (pctY * 2.0);
+      const waveVal = Math.sin(phase);
+      
+      const displacedY = y + waveVal * 15;
+      const displacedX = x + Math.cos(phase) * 6;
+      
+      // Scale dot radius and opacity to simulate 3D depth contours
+      const radius = 0.8 + (waveVal + 1) * 0.9;
+      const opacity = 0.02 + (waveVal + 1) * 0.035;
+      
+      meshDots.push({
+        key: `${c}-${r}`,
+        cx: displacedX,
+        cy: displacedY,
+        r: radius,
+        opacity: Number(opacity.toFixed(3)),
+      });
+    }
+  }
+
   return (
     <div className="relative w-full bg-[var(--bg)] overflow-hidden">
       
       {/* Hero Section */}
-      <section className="relative z-10 mt-[64px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto min-h-[calc(100svh-64px)] flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative z-10 mt-[72px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto min-h-[calc(100svh-72px)] flex flex-col items-center justify-center overflow-hidden">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -67,12 +107,13 @@ export default function AIHubPage() {
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--hero-overlay-bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/30 to-transparent" />
         </div>
-
+ 
         {/* Header Content */}
         <div className="relative z-10 flex flex-col items-center text-center">
-          <div className="flex items-center gap-2 font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-4 py-1.5 backdrop-blur-sm">
+          <div className="flex items-center gap-2 font-mono text-[11px] text-[var(--tag-text)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-4 py-1.5 backdrop-blur-sm">
             <Cpu className="w-4 h-4" />
             [AI-POWERED]
           </div>
@@ -87,9 +128,9 @@ export default function AIHubPage() {
             Cutting-edge AI tools that analyze your body, plan your workouts, design your diet, and coach you to your goals — completely free.
           </p>
         </div>
-
+ 
       </section>
-
+ 
       {/* Grid Section */}
       <section className="py-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto">
         {/* 3x2 Grid */}
@@ -100,10 +141,34 @@ export default function AIHubPage() {
               <Link
                 key={tool.title}
                 href={tool.path}
-                className="group relative overflow-hidden flex flex-col border border-[var(--border)] bg-[var(--surface)] p-9 hover:border-[var(--acid)] hover:bg-[var(--acid-dim)] transition-colors duration-300 min-h-[280px]"
+                style={{ background: 'var(--ai-card-bg)' }}
+                className="group relative overflow-hidden flex flex-col border border-[var(--border)] p-9 shadow-[0_10px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:border-[var(--acid)] hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(91,15,24,0.15)] transition-all duration-500 min-h-[280px]"
               >
-                {/* Spectral Gradient Background */}
-                <div className="absolute inset-0 z-0 bg-[linear-gradient(to_bottom_right,#ef4444,#f97316,#eab308,#22c55e,#3b82f6,#6366f1,#a855f7)] opacity-[0.03] group-hover:opacity-[0.12] transition-opacity duration-500" />
+                {/* Procedural Metallic Mesh Waves Background */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                  <svg 
+                    className="absolute w-[120%] h-[120%] -left-[10%] -top-[10%] opacity-[var(--ai-card-mesh-opacity)] group-hover:opacity-80 transition-all duration-700 pointer-events-none" 
+                    viewBox="0 0 400 300"
+                    style={{
+                      animation: 'meshFloat 10s ease-in-out infinite',
+                    }}
+                  >
+                    {meshDots.map((dot) => (
+                      <circle 
+                        key={dot.key}
+                        cx={dot.cx}
+                        cy={dot.cy}
+                        r={dot.r}
+                        fill="var(--ai-card-mesh-color)"
+                        opacity={dot.opacity}
+                      />
+                    ))}
+                  </svg>
+                  {/* Luxury soft radial gradient lighting */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--text-primary)_0%,transparent_75%)]" />
+                  {/* Metallic travel shine sweep */}
+                  <div className="card-shine" />
+                </div>
                 
                 <div className="relative z-10 flex flex-col flex-1">
                   <Icon className="w-7 h-7 text-[var(--acid)] mb-8" />
@@ -115,7 +180,7 @@ export default function AIHubPage() {
                   <p className="font-inter text-[14px] text-[var(--text-secondary)] mb-8 leading-relaxed">
                     {tool.desc}
                   </p>
-
+ 
                   <div className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="font-mono text-[11px] text-[var(--acid)] uppercase tracking-widest">
                       → LAUNCH

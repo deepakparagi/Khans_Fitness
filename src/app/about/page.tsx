@@ -30,7 +30,7 @@ export default function AboutPage() {
     <div className="w-full bg-[var(--bg)]">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[calc(100svh-64px)] flex items-center justify-center mt-[64px] overflow-hidden">
+      <section className="relative w-full min-h-[calc(100svh-72px)] flex items-center justify-center mt-[72px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -41,11 +41,12 @@ export default function AboutPage() {
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--hero-overlay-bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/30 to-transparent" />
         </div>
         
         <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] px-4 py-1.5 bg-[var(--acid-dim)] backdrop-blur-sm">
+          <div className="font-mono text-[11px] text-[var(--tag-text)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] px-4 py-1.5 bg-[var(--acid-dim)] backdrop-blur-sm">
             [SYS_INF: CORE_CAPABILITIES]
           </div>
           
@@ -78,32 +79,32 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="flex flex-col gap-4 font-mono text-[12px] text-[var(--text-secondary)] bg-[var(--surface)] p-8 border border-[var(--border)]">
+          <div className="flex flex-col gap-4 font-mono text-[12px] text-[var(--text-secondary)] info-panel p-8 border border-[var(--border)]">
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
-              <span className="text-[var(--acid)] w-24 shrink-0">ESTABLISHED</span>
+              <span className="text-[var(--tag-text)] w-24 shrink-0">ESTABLISHED</span>
               <span className="text-[var(--text-primary)]">2015</span>
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
-              <span className="text-[var(--acid)] w-24 shrink-0">TYPE</span>
+              <span className="text-[var(--tag-text)] w-24 shrink-0">TYPE</span>
               <span className="text-[var(--text-primary)]">Unisex (Men + Women)</span>
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
-              <span className="text-[var(--acid)] w-24 shrink-0">LOCATION</span>
+              <span className="text-[var(--tag-text)] w-24 shrink-0">LOCATION</span>
               <span className="text-[var(--text-primary)]">Hatalgeri Rd, near Sai Baba Temple</span>
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
-              <span className="text-[var(--acid)] w-24 shrink-0">RATING</span>
+              <span className="text-[var(--tag-text)] w-24 shrink-0">RATING</span>
               <span className="text-[var(--text-primary)]">4.7 ★ (502+ Google reviews)</span>
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
-              <span className="text-[var(--acid)] w-24 shrink-0">HOURS</span>
+              <span className="text-[var(--tag-text)] w-24 shrink-0">HOURS</span>
               <span className="text-[var(--text-primary)] flex flex-col">
                 <span>Mon–Sat: 6:00 AM – 10:00 PM</span>
                 <span>Sun: Closed</span>
               </span>
             </div>
             <div className="flex items-start gap-4 mt-2">
-              <span className="text-[var(--acid)] shrink-0 uppercase tracking-widest">[MEMBERSHIP]</span>
+              <span className="text-[var(--tag-text)] shrink-0 uppercase tracking-widest">[MEMBERSHIP]</span>
               <span className="text-[var(--text-primary)]">Registration required before floor access</span>
             </div>
           </div>
@@ -111,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* Feature List (Row format) */}
-      <section className="border-b border-[var(--border)]">
+      <section className="border-b border-[var(--border)] bg-[var(--bg2)]">
         <div className="flex flex-col">
           {FEATURES.map((feature) => (
             <div 
@@ -194,9 +195,9 @@ export default function AboutPage() {
       </section>
 
       {/* Hardware & Machinery Grid */}
-      <section className="py-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto">
+      <section className="py-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto bg-[var(--bg2)]">
         <div className="mb-20">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-12">
+          <div className="font-mono text-[11px] text-[var(--tag-text)] tracking-widest uppercase mb-12">
             [SYS_INF: INFRASTRUCTURE]
           </div>
           <TextReveal>
@@ -220,7 +221,7 @@ export default function AboutPage() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {hw.tags.map(tag => (
-                    <span key={tag} className="font-mono text-[10px] text-[var(--acid)] border border-[var(--muted)] px-2 py-1 uppercase tracking-widest bg-[var(--surface)]">
+                    <span key={tag} className="font-mono text-[10px] text-[var(--tag-text)] border border-[var(--border)] px-2 py-1 uppercase tracking-widest bg-[var(--surface)]">
                       {tag}
                     </span>
                   ))}

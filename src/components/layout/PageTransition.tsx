@@ -47,7 +47,7 @@ export default function PageTransition({
         style={{
           position: 'fixed',
           inset: 0,
-          background: '#CCFF00',
+          background: 'var(--acid)',
           zIndex: 9999,
           display: 'none',
           alignItems: 'center',
@@ -62,7 +62,7 @@ export default function PageTransition({
             fontSize: '12px',
             letterSpacing: '4px',
             textTransform: 'uppercase',
-            color: '#080808',
+            color: 'var(--cream)',
             opacity: 0,
           }}
         >

@@ -64,7 +64,7 @@ function Dumbbell3D({ theme }: { theme: string }) {
   const isLight = theme === 'light';
   const weightColor = isLight ? '#222222' : '#4a4a4a';
   const handleColor = isLight ? '#888888' : '#aaaaaa';
-  const accentColor = isLight ? '#8A9900' : '#CCFF00';
+  const accentColor = isLight ? '#5B0F18' : '#D8A7A7';
 
   return (
     <group ref={ref} position={[3.8, 0.0, 0]} scale={1.1}>
@@ -130,7 +130,7 @@ function Kettlebell3D({ theme }: { theme: string }) {
   const isLight = theme === 'light';
   const weightColor = isLight ? '#222222' : '#4a4a4a';
   const handleColor = isLight ? '#444444' : '#666666';
-  const accentColor = isLight ? '#8A9900' : '#CCFF00';
+  const accentColor = isLight ? '#5B0F18' : '#D8A7A7';
 
   return (
     <group ref={ref} position={[1.0, 3.2, -3]} scale={0.7}>
@@ -167,7 +167,7 @@ function WeightPlate3D({ theme }: { theme: string }) {
 
   const isLight = theme === 'light';
   const plateColor = isLight ? '#333333' : '#4a4a4a';
-  const accentColor = isLight ? '#8A9900' : '#CCFF00';
+  const accentColor = isLight ? '#5B0F18' : '#D8A7A7';
 
   return (
     <group ref={ref} position={[1.2, -3.2, -2]} scale={0.8}>
@@ -204,7 +204,7 @@ function ProteinShaker3D({ theme }: { theme: string }) {
   const isLight = theme === 'light';
   const bodyColor = isLight ? '#f0f0f0' : '#4a4a4a';
   const capColor = isLight ? '#888888' : '#111111';
-  const accentColor = isLight ? '#8A9900' : '#CCFF00';
+  const accentColor = isLight ? '#5B0F18' : '#D8A7A7';
 
   return (
     <group ref={ref} position={[6.5, 2.8, -2.5]} scale={0.8}>
@@ -240,7 +240,7 @@ function MedicineBall3D({ theme }: { theme: string }) {
 
   const isLight = theme === 'light';
   const ballColor = isLight ? '#333333' : '#4a4a4a';
-  const stripeColor = isLight ? '#8A9900' : '#CCFF00';
+  const stripeColor = isLight ? '#5B0F18' : '#D8A7A7';
 
   return (
     <group ref={ref} position={[6.2, -2.8, -1.0]} scale={0.9}>
@@ -297,7 +297,7 @@ export default function Hero3D() {
         particleMaterial.opacity = isLight ? 0.12 : 0.20
       }
       if (ringMaterial) {
-        ringMaterial.color.setHex(isLight ? 0x5C6B00 : 0xCCFF00)
+        ringMaterial.color.setHex(isLight ? 0x5B0F18 : 0xD8A7A7)
         ringMaterial.opacity = isLight ? 0.3 : 0.4
       }
     }
@@ -319,7 +319,7 @@ export default function Hero3D() {
     <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
       <ambientLight intensity={theme === 'light' ? 0.8 : 0.7} />
       <directionalLight position={[10, 10, 5]} intensity={theme === 'light' ? 1.5 : 1.3} />
-      <pointLight position={[-10, -10, -5]} intensity={0.5} color={theme === 'light' ? '#8A9900' : '#CCFF00'} />
+      <pointLight position={[-10, -10, -5]} intensity={0.5} color={theme === 'light' ? '#5B0F18' : '#D8A7A7'} />
       <ParticleField theme={theme} />
       <FloatingRing />
       <Dumbbell3D theme={theme} />

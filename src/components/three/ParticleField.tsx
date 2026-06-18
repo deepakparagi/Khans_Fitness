@@ -24,23 +24,23 @@ function Particles() {
       pos[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
       pos[i3 + 2] = radius * Math.cos(phi);
 
-      // Gold to white gradient
+      // Rose Dust to Burgundy gradient
       const t = Math.random();
       if (t < 0.3) {
-        // Gold particles
-        col[i3] = 0.83;
-        col[i3 + 1] = 0.66;
-        col[i3 + 2] = 0.26;
+        // Rose Dust particles
+        col[i3] = 0.85;
+        col[i3 + 1] = 0.65;
+        col[i3 + 2] = 0.65;
       } else if (t < 0.6) {
-        // Silver/white particles
-        col[i3] = 0.8;
-        col[i3 + 1] = 0.8;
-        col[i3 + 2] = 0.8;
+        // Wine/Burgundy particles
+        col[i3] = 0.48;
+        col[i3 + 1] = 0.12;
+        col[i3 + 2] = 0.17;
       } else {
         // Dim particles
-        col[i3] = 0.3;
-        col[i3 + 1] = 0.3;
-        col[i3 + 2] = 0.35;
+        col[i3] = 0.25;
+        col[i3 + 1] = 0.2;
+        col[i3 + 2] = 0.22;
       }
     }
 
@@ -93,7 +93,7 @@ function FloatingRing() {
   return (
     <mesh ref={ringRef} position={[0, 0, 0]}>
       <torusGeometry args={[2.5, 0.01, 16, 100]} />
-      <meshBasicMaterial color="#D4A843" transparent opacity={0.15} />
+      <meshBasicMaterial color="#D8A7A7" transparent opacity={0.15} />
     </mesh>
   );
 }
@@ -111,7 +111,7 @@ function FloatingRing2() {
   return (
     <mesh ref={ringRef} position={[0, 0, 0]}>
       <torusGeometry args={[3.5, 0.008, 16, 100]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.06} />
+      <meshBasicMaterial color="#7A1F2B" transparent opacity={0.06} />
     </mesh>
   );
 }

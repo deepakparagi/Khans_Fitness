@@ -49,24 +49,24 @@ export default function BMIPage() {
       const idealMax = Math.round(24.9 * (heightM * heightM));
 
       let category: 'UNDERWEIGHT' | 'OPTIMAL' | 'OVERWEIGHT' | 'OBESE' = 'OPTIMAL';
-      let color = '#CCFF00'; // var(--acid)
+      let color = 'var(--acid)'; // var(--acid)
       let recommendation = '';
 
       if (bmi < 18.5) {
         category = 'UNDERWEIGHT';
-        color = '#4FC3F7';
+        color = '#D8A7A7'; // Rose Dust
         recommendation = "Caloric surplus protocol required. Target +300-500 kcal above TDEE. Prioritize compound lifts 4x/week with Khan Sir's strength program.";
       } else if (bmi >= 18.5 && bmi < 25) {
         category = 'OPTIMAL';
-        color = 'var(--acid)';
+        color = 'var(--acid)'; // Burgundy
         recommendation = "You're in the performance zone. Maintain with TDEE calories. Focus on body recomposition — build muscle while staying lean.";
       } else if (bmi >= 25 && bmi < 30) {
         category = 'OVERWEIGHT';
-        color = '#FFC107';
+        color = '#7A1F2B'; // Wine
         recommendation = `Implement a 400-500 kcal daily deficit from your TDEE of ${Math.round(tdee)} kcal. 4-5 cardio sessions/week + strength training. Results in 12-16 weeks.`;
       } else {
         category = 'OBESE';
-        color = '#FF2D2D';
+        color = '#5B0F18'; // Burgundy
         recommendation = "Critical intervention required. Begin with 3x/week low-impact cardio. Create 500 kcal deficit. Consult with Khan Sir immediately.";
       }
 
@@ -183,9 +183,9 @@ export default function BMIPage() {
               </span>
 
               {/* Visual Gradient Bar with pointer */}
-              <div className="relative w-full h-4 mb-3 border border-[var(--border)]" style={{ background: 'linear-gradient(to right, #4FC3F7, #CCFF00, #FFC107, #FF2D2D)' }}>
+              <div className="relative w-full h-4 mb-3 border border-[var(--border)]" style={{ background: 'linear-gradient(to right, #D8A7A7, #7A1F2B, #5B0F18)' }}>
                 <div 
-                  className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-black transition-all duration-500 shadow-lg"
+                  className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[var(--cream)] border-2 border-[var(--espresso)] transition-all duration-500 shadow-lg"
                   style={{ left: `calc(${getPointerPercentage(bmiData.bmi)}% - 8px)` }}
                 />
               </div>

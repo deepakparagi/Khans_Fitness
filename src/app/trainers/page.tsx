@@ -58,7 +58,7 @@ const TRAINERS = [
 export default function TrainersPage() {
   return (
     <div className="w-full bg-[var(--bg)]">
-      <section className="relative mt-[64px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[calc(100svh-64px)] min-h-[calc(100svh-64px)] flex flex-col justify-center overflow-hidden">
+      <section className="relative mt-[72px] pt-[80px] pb-[100px] px-6 lg:px-12 2xl:px-24 w-full mx-auto h-[calc(100svh-72px)] min-h-[calc(100svh-72px)] flex flex-col justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -69,12 +69,13 @@ export default function TrainersPage() {
             quality={90}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--hero-overlay-bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/30 to-transparent" />
         </div>
         
         {/* Header */}
         <div className="relative z-10 mb-16 flex flex-col items-center text-center">
-          <div className="font-mono text-[11px] text-[var(--acid)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
+          <div className="font-mono text-[11px] text-[var(--tag-text)] tracking-widest uppercase mb-8 border border-[var(--acid-border)] bg-[var(--acid-dim)] px-3 py-1 inline-block">
             [SYS_INF: OPTIMIZATION_TEAM]
           </div>
           <TextReveal stagger={0.15} className="items-center">
