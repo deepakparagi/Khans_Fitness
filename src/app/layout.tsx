@@ -33,19 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: `
-(function(){
-  try {
-    var theme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch(e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
-})();
-` }} />
-      </head>
+    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
+      <head />
       <body className="antialiased bg-[var(--bg)] text-[var(--text-primary)] font-inter">
         <ThemeProvider>
           <InitialLoader />

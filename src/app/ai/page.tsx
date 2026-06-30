@@ -142,7 +142,7 @@ export default function AIHubPage() {
                 key={tool.title}
                 href={tool.path}
                 style={{ background: 'var(--ai-card-bg)' }}
-                className="group relative overflow-hidden flex flex-col border border-[var(--border)] p-9 shadow-[0_10px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:border-[var(--acid)] hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(91,15,24,0.15)] transition-all duration-500 min-h-[280px]"
+                className="group relative overflow-hidden flex flex-col border border-[var(--border)] p-9 shadow-[0_10px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:border-[var(--acid)] hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(220,38,38,0.15)] transition-all duration-500 min-h-[280px]"
               >
                 {/* Procedural Metallic Mesh Waves Background */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

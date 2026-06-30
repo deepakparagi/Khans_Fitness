@@ -54,7 +54,7 @@ export default function BMIPage() {
 
       if (bmi < 18.5) {
         category = 'UNDERWEIGHT';
-        color = '#D8A7A7'; // Rose Dust
+        color = '#FCA5A5'; // Rose
         recommendation = "Caloric surplus protocol required. Target +300-500 kcal above TDEE. Prioritize compound lifts 4x/week with Khan Sir's strength program.";
       } else if (bmi >= 18.5 && bmi < 25) {
         category = 'OPTIMAL';
@@ -62,11 +62,11 @@ export default function BMIPage() {
         recommendation = "You're in the performance zone. Maintain with TDEE calories. Focus on body recomposition — build muscle while staying lean.";
       } else if (bmi >= 25 && bmi < 30) {
         category = 'OVERWEIGHT';
-        color = '#7A1F2B'; // Wine
+        color = '#EF4444'; // Red
         recommendation = `Implement a 400-500 kcal daily deficit from your TDEE of ${Math.round(tdee)} kcal. 4-5 cardio sessions/week + strength training. Results in 12-16 weeks.`;
       } else {
         category = 'OBESE';
-        color = '#5B0F18'; // Burgundy
+        color = '#DC2626'; // Red
         recommendation = "Critical intervention required. Begin with 3x/week low-impact cardio. Create 500 kcal deficit. Consult with Khan Sir immediately.";
       }
 
@@ -183,7 +183,7 @@ export default function BMIPage() {
               </span>
 
               {/* Visual Gradient Bar with pointer */}
-              <div className="relative w-full h-4 mb-3 border border-[var(--border)]" style={{ background: 'linear-gradient(to right, #D8A7A7, #7A1F2B, #5B0F18)' }}>
+              <div className="relative w-full h-4 mb-3 border border-[var(--border)]" style={{ background: 'linear-gradient(to right, #FCA5A5, #EF4444, #DC2626)' }}>
                 <div 
                   className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[var(--cream)] border-2 border-[var(--espresso)] transition-all duration-500 shadow-lg"
                   style={{ left: `calc(${getPointerPercentage(bmiData.bmi)}% - 8px)` }}

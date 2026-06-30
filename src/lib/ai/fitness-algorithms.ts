@@ -18,37 +18,37 @@ export function calculateBMI(weightKg: number, heightCm: number): BMIResult {
 
   if (bmi < 16) {
     category = 'Severely Underweight';
-    color = '#7A1F2B'; // Wine
+    color = '#EF4444'; // Red
     advice = 'You need to gain weight urgently. Consult a doctor and nutritionist immediately.';
     healthRisk = 'Very High';
   } else if (bmi < 18.5) {
     category = 'Underweight';
-    color = '#D8A7A7'; // Rose Dust
+    color = '#FCA5A5'; // Rose
     advice = 'Focus on calorie-surplus diet with strength training to build healthy mass.';
     healthRisk = 'Moderate';
   } else if (bmi < 25) {
     category = 'Normal Weight';
-    color = '#5B0F18'; // Burgundy (Primary accent)
+    color = '#DC2626'; // Red (Primary accent)
     advice = 'Great job! Maintain your weight with regular exercise and balanced nutrition.';
     healthRisk = 'Low';
   } else if (bmi < 30) {
     category = 'Overweight';
-    color = '#D8A7A7'; // Rose Dust
+    color = '#FCA5A5'; // Rose
     advice = 'Combine cardio with strength training and maintain a slight calorie deficit.';
     healthRisk = 'Moderate';
   } else if (bmi < 35) {
     category = 'Obese Class I';
-    color = '#7A1F2B'; // Wine
+    color = '#EF4444'; // Red
     advice = 'Focus on a structured fat loss program with dietary changes and regular exercise.';
     healthRisk = 'High';
   } else if (bmi < 40) {
     category = 'Obese Class II';
-    color = '#7A1F2B'; // Wine
+    color = '#EF4444'; // Red
     advice = 'Consult a healthcare professional. Start with low-impact exercises and nutritional guidance.';
     healthRisk = 'Very High';
   } else {
     category = 'Obese Class III';
-    color = '#5B0F18'; // Burgundy
+    color = '#DC2626'; // Red
     advice = 'Seek immediate medical consultation. A supervised program is essential.';
     healthRisk = 'Extremely High';
   }
@@ -198,10 +198,10 @@ export function calculateFitnessScore(
   score = Math.min(100, Math.max(0, score));
 
   let level: string, color: string;
-  if (score >= 80) { level = 'Excellent'; color = '#5B0F18'; } // Burgundy
-  else if (score >= 60) { level = 'Good'; color = '#7A1F2B'; } // Wine
-  else if (score >= 40) { level = 'Average'; color = '#D8A7A7'; } // Rose Dust
-  else { level = 'Needs Improvement'; color = '#7A1F2B'; } // Wine
+  if (score >= 80) { level = 'Excellent'; color = '#DC2626'; } // Red
+  else if (score >= 60) { level = 'Good'; color = '#EF4444'; } // Light Red
+  else if (score >= 40) { level = 'Average'; color = '#FCA5A5'; } // Rose
+  else { level = 'Needs Improvement'; color = '#EF4444'; } // Light Red
 
   const bmr = calculateBMR(weightKg, heightCm, age, gender);
   const tdee = calculateTDEE(bmr, fitnessLevel === 'beginner' ? 'light' : 'moderate');

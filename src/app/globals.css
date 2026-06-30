@@ -33,10 +33,10 @@
     --surface3: #222222;
     --border: rgba(255, 255, 255, 0.08);
     --border2: rgba(255, 255, 255, 0.12);
-    --acid: #5B0F18;
-    --acid-dim: rgba(91, 15, 24, 0.08);
-    --acid-border: rgba(91, 15, 24, 0.25);
-    --red: #7A1F2B;
+    --acid: #DC2626;
+    --acid-dim: rgba(220, 38, 38, 0.08);
+    --acid-border: rgba(220, 38, 38, 0.25);
+    --red: #EF4444;
     --text-primary: #F8F1E7;
     --text-secondary: rgba(248, 241, 231, 0.75);
     --text-muted: rgba(248, 241, 231, 0.5);
@@ -46,12 +46,12 @@
     --input-bg: #151515;
     --tag-bg: transparent;
     --tag-border: rgba(255, 255, 255, 0.08);
-    --tag-text: #D8A7A7;
-    --stripe-bg: #5B0F18;
+    --tag-text: #FCA5A5;
+    --stripe-bg: #DC2626;
     --stripe-text: #F8F1E7;
     --marquee-bg: #0D0D0D;
     --marquee-text: rgba(248, 241, 231, 0.4);
-    --initials-bg: #5B0F18;
+    --initials-bg: #DC2626;
     --initials-text: #F8F1E7;
     --map-filter: grayscale(100%) invert(90%) contrast(90%);
     --hero-overlay-opacity: 0.6;
@@ -66,11 +66,11 @@
     --ai-card-mesh-color: #FFFFFF;
 
     /* Rebrand colors */
-    --burgundy: #5B0F18;
-    --wine: #7A1F2B;
+    --burgundy: #DC2626;
+    --wine: #EF4444;
     --espresso: #1E1E1E;
     --cream: #F8F1E7;
-    --rose-dust: #D8A7A7;
+    --rose-dust: #FCA5A5;
   }
 
   [data-theme="light"] {
@@ -81,10 +81,10 @@
     --surface3: #EAEAE4;
     --border: rgba(30, 30, 30, 0.08);
     --border2: rgba(30, 30, 30, 0.1);
-    --acid: #5B0F18;
-    --acid-dim: rgba(91, 15, 24, 0.06);
-    --acid-border: rgba(91, 15, 24, 0.15);
-    --red: #7A1F2B;
+    --acid: #DC2626;
+    --acid-dim: rgba(220, 38, 38, 0.06);
+    --acid-border: rgba(220, 38, 38, 0.15);
+    --red: #EF4444;
     --text-primary: #1E1E1E;
     --text-secondary: rgba(30, 30, 30, 0.75);
     --text-muted: rgba(30, 30, 30, 0.55);
@@ -94,7 +94,7 @@
     --input-bg: #FFFFFF;
     --tag-bg: #FFFFFF;
     --tag-border: rgba(30, 30, 30, 0.1);
-    --tag-text: #5B0F18;
+    --tag-text: #DC2626;
     --stripe-bg: #1E1E1E;
     --stripe-text: #F8F1E7;
     --marquee-bg: #FCFAF6;
@@ -114,11 +114,11 @@
     --ai-card-mesh-color: #1E1E1E;
 
     /* Rebrand colors */
-    --burgundy: #5B0F18;
-    --wine: #7A1F2B;
+    --burgundy: #DC2626;
+    --wine: #EF4444;
     --espresso: #1E1E1E;
     --cream: #F8F1E7;
-    --rose-dust: #D8A7A7;
+    --rose-dust: #FCA5A5;
   }
 
   * {
@@ -153,7 +153,7 @@
 
 @layer utilities {
   .text-shadow-acid {
-    text-shadow: 0 0 10px rgba(91, 15, 24, 0.5);
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
   }
   
   .border-acid {
@@ -166,9 +166,9 @@
   }
 
   @keyframes whatsapp-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(91, 15, 24, 0.5); }
-    70% { box-shadow: 0 0 0 12px rgba(91, 15, 24, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(91, 15, 24, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
   }
   .whatsapp-btn { animation: whatsapp-pulse 2.5s infinite; }
 
@@ -183,7 +183,7 @@
   }
 
   [data-theme="light"] .plan-card-featured {
-    background: rgba(91, 15, 24, 0.08);
+    background: rgba(220, 38, 38, 0.08);
     border-color: var(--acid);
   }
 
@@ -296,7 +296,7 @@
   [data-theme="dark"] .premium-card:hover,
   [data-theme="dark"] div.border-\[var\(--border\)\].bg-\[var\(--surface\)\]:hover {
     border-color: var(--burgundy) !important;
-    box-shadow: 0 20px 60px rgba(91, 15, 24, 0.18) !important;
+    box-shadow: 0 20px 60px rgba(220, 38, 38, 0.18) !important;
     transform: translateY(-8px) !important;
   }
 

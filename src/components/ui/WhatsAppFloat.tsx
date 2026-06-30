@@ -19,16 +19,16 @@ export function WhatsAppFloat() {
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 500,
-        boxShadow: '0 4px 20px rgba(91,15,24,0.4)',
+        boxShadow: '0 4px 20px rgba(220,38,38,0.4)',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'scale(1.1)';
-        e.currentTarget.style.boxShadow = '0 8px 30px rgba(122,31,43,0.6)';
+        e.currentTarget.style.boxShadow = '0 8px 30px rgba(239,68,68,0.6)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow = '0 4px 20px rgba(91,15,24,0.4)';
+        e.currentTarget.style.boxShadow = '0 4px 20px rgba(220,38,38,0.4)';
       }}
       aria-label="Chat on WhatsApp"
     >

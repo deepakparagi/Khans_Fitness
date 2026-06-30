@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@/components/ThemeProvider';
 
 const NAV_LINKS = [
   { label: 'HOME', href: '/' },
@@ -22,7 +21,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,42 +86,7 @@ export function Navbar() {
           </div>
 
           {/* RIGHT: CTA */}
-          <div className="hidden xl:flex flex-1 items-center justify-end gap-6">
-            <Link 
-              href="/ai" 
-              className="font-mono text-[11px] text-[var(--acid)] uppercase tracking-widest hover:underline underline-offset-4"
-              data-cursor="magnetic"
-            >
-              ACCESS_AI
-            </Link>
-            
-            <button
-              onClick={toggle}
-              data-cursor="magnetic"
-              style={{
-                all: 'unset',
-                cursor: 'none',
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--text-muted)',
-                flexShrink: 0,
-                borderRadius: '0',
-                background: 'none',
-                border: 'none',
-                outline: 'none',
-                boxShadow: 'none',
-              }}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {theme === 'dark'
-                ? <Sun size={16} strokeWidth={1.5} />
-                : <Moon size={16} strokeWidth={1.5} />
-              }
-            </button>
-
+          <div className="hidden xl:flex flex-1 items-center justify-end">
             <Link 
               href="/plans"
               className="bg-[var(--acid)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest px-6 py-3 hover:bg-[var(--text-primary)] transition-colors"
@@ -135,32 +98,6 @@ export function Navbar() {
 
           {/* MOBILE TOGGLE & THEME */}
           <div className="flex xl:hidden items-center gap-2">
-            <button
-              onClick={toggle}
-              data-cursor="magnetic"
-              style={{
-                all: 'unset',
-                cursor: 'none',
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--text-muted)',
-                flexShrink: 0,
-                borderRadius: '0',
-                background: 'none',
-                border: 'none',
-                outline: 'none',
-                boxShadow: 'none',
-              }}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {theme === 'dark'
-                ? <Sun size={16} strokeWidth={1.5} />
-                : <Moon size={16} strokeWidth={1.5} />
-              }
-            </button>
             <button 
               className="text-[var(--acid)] p-2"
               onClick={() => setMobileMenuOpen(true)}

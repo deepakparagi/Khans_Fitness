@@ -93,7 +93,7 @@ function FloatingRing() {
   return (
     <mesh ref={ringRef} position={[0, 0, 0]}>
       <torusGeometry args={[2.5, 0.01, 16, 100]} />
-      <meshBasicMaterial color="#D8A7A7" transparent opacity={0.15} />
+      <meshBasicMaterial color="#FCA5A5" transparent opacity={0.15} />
     </mesh>
   );
 }
@@ -111,7 +111,7 @@ function FloatingRing2() {
   return (
     <mesh ref={ringRef} position={[0, 0, 0]}>
       <torusGeometry args={[3.5, 0.008, 16, 100]} />
-      <meshBasicMaterial color="#7A1F2B" transparent opacity={0.06} />
+      <meshBasicMaterial color="#EF4444" transparent opacity={0.06} />
     </mesh>
   );
 }
