@@ -99,16 +99,16 @@ export function CustomCursor() {
   }, []);
 
   // Determine circle classes based on state
-  let circleWidth = 48;
+  let circleWidth = 24;
   let circleClasses = 'border border-[var(--acid-border)] bg-transparent';
   let dotVisibility = 'opacity-100';
 
   if (isHoveringMagnetic) {
-    circleWidth = 80;
+    circleWidth = 48;
     circleClasses = 'border-transparent bg-[var(--acid)] opacity-15';
     dotVisibility = 'opacity-0';
   } else if (isHoveringLink || isHoveringImage) {
-    circleWidth = 64;
+    circleWidth = 36;
     circleClasses = 'border border-[var(--acid)] bg-[var(--bg)] bg-opacity-40 backdrop-blur-sm';
     dotVisibility = 'opacity-0';
   }
@@ -150,8 +150,8 @@ export function CustomCursor() {
       {/* The small dot */}
       <div 
         ref={dotRef}
-        className={`absolute top-0 left-0 w-[6px] h-[6px] rounded-full bg-[var(--acid)] transition-opacity duration-200 ${dotVisibility}`}
-        style={{ marginLeft: -3, marginTop: -3 }}
+        className={`absolute top-0 left-0 w-[4px] h-[4px] rounded-full bg-[var(--acid)] transition-opacity duration-200 ${dotVisibility}`}
+        style={{ marginLeft: -2, marginTop: -2 }}
       />
     </div>
   );
