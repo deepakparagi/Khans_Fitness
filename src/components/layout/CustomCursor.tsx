@@ -99,14 +99,17 @@ export function CustomCursor() {
   }, []);
 
   // Determine circle classes based on state
-  let circleSize = 'w-[48px] h-[48px] border border-[var(--acid-border)] bg-transparent';
+  let circleWidth = 48;
+  let circleClasses = 'border border-[var(--acid-border)] bg-transparent';
   let dotVisibility = 'opacity-100';
 
   if (isHoveringMagnetic) {
-    circleSize = 'w-[80px] h-[80px] border-transparent bg-[var(--acid)] opacity-15';
+    circleWidth = 80;
+    circleClasses = 'border-transparent bg-[var(--acid)] opacity-15';
     dotVisibility = 'opacity-0';
   } else if (isHoveringLink || isHoveringImage) {
-    circleSize = 'w-[64px] h-[64px] border border-[var(--acid)] bg-[var(--bg)] bg-opacity-40 backdrop-blur-sm';
+    circleWidth = 64;
+    circleClasses = 'border border-[var(--acid)] bg-[var(--bg)] bg-opacity-40 backdrop-blur-sm';
     dotVisibility = 'opacity-0';
   }
 
@@ -115,8 +118,13 @@ export function CustomCursor() {
       {/* The main circle */}
       <div 
         ref={circleRef}
-        className={`absolute top-0 left-0 -ml-[50%] -mt-[50%] flex items-center justify-center rounded-full transition-all duration-300 ease-out ${circleSize}`}
-        style={{ transformOrigin: 'center center' }}
+        className={`absolute top-0 left-0 flex items-center justify-center rounded-full transition-[width,height,border,background,opacity] duration-300 ease-out ${circleClasses}`}
+        style={{ 
+          width: circleWidth,
+          height: circleWidth,
+          marginLeft: -(circleWidth / 2),
+          marginTop: -(circleWidth / 2),
+        }}
       >
         {/* Text for links */}
         <div 
@@ -142,7 +150,8 @@ export function CustomCursor() {
       {/* The small dot */}
       <div 
         ref={dotRef}
-        className={`absolute top-0 left-0 w-[6px] h-[6px] -ml-[3px] -mt-[3px] rounded-full bg-[var(--acid)] transition-opacity duration-200 ${dotVisibility}`}
+        className={`absolute top-0 left-0 w-[6px] h-[6px] rounded-full bg-[var(--acid)] transition-opacity duration-200 ${dotVisibility}`}
+        style={{ marginLeft: -3, marginTop: -3 }}
       />
     </div>
   );

@@ -148,30 +148,33 @@ export default function AboutPage() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-1 p-1 bg-[var(--bg)]">
         <div className="relative h-[600px]">
           <Image 
-            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80"
+            src="/images/gallery/IMG_1839.jpg"
             alt="Gym Training"
             fill
             className="object-cover dark:grayscale-[20%] grayscale-0 transition-[filter] duration-300"
-            quality={90}
+            quality={80}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
         <div className="grid grid-rows-2 gap-1 h-[600px]">
           <div className="relative w-full h-full">
             <Image 
-              src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80"
+              src="/images/gallery/IMG_2550.jpg"
               alt="Weights"
               fill
               className="object-cover dark:grayscale-[20%] grayscale-0 transition-[filter] duration-300"
-              quality={90}
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <div className="relative w-full h-full">
             <Image 
-              src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80"
+              src="/images/gallery/IMG_2839.jpg"
               alt="Equipment"
               fill
               className="object-cover dark:grayscale-[20%] grayscale-0 transition-[filter] duration-300"
-              quality={90}
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>

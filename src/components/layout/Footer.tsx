@@ -34,7 +34,7 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <h3 className="font-bebas text-2xl text-[var(--text-primary)] tracking-widest">PROTOCOLS</h3>
             <ul className="flex flex-col gap-3">
-              {['About', 'Plans', 'Trainers', 'Transformations', 'Contact'].map(link => (
+              {['About', 'Plans', 'Gallery', 'Transformations', 'Contact'].map(link => (
                 <li key={link}>
                   <Link href={`/${link.toLowerCase()}`} className="font-mono text-[12px] text-[var(--text-muted)] hover:text-[var(--acid)] transition-colors uppercase tracking-widest">
                     /{link}
@@ -44,23 +44,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* AI Tools Links */}
+          {/* Gallery Links */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-bebas text-2xl text-[var(--text-primary)] tracking-widest">AI_MODULES</h3>
+            <h3 className="font-bebas text-2xl text-[var(--text-primary)] tracking-widest">MEDIA</h3>
             <ul className="flex flex-col gap-3">
-              {[
-                { label: 'BMI Calculator', path: '/ai/bmi' },
-                { label: 'Workout Generator', path: '/ai/workout' },
-                { label: 'Diet Planner', path: '/ai/diet' },
-                { label: 'Health Calculators', path: '/ai/calculators' },
-                { label: 'AI Chat Coach', path: '/ai/chat' }
-              ].map(link => (
-                <li key={link.label}>
-                  <Link href={link.path} className="font-mono text-[12px] text-[var(--text-muted)] hover:text-[var(--acid)] transition-colors uppercase tracking-widest">
-                    /{link.label.replace(' ', '_')}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/gallery" className="font-mono text-[12px] text-[var(--text-muted)] hover:text-[var(--acid)] transition-colors uppercase tracking-widest">
+                  /Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/transformations" className="font-mono text-[12px] text-[var(--text-muted)] hover:text-[var(--acid)] transition-colors uppercase tracking-widest">
+                  /Transformations
+                </Link>
+              </li>
             </ul>
           </div>
 

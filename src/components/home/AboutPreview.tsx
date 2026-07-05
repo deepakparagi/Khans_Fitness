@@ -64,7 +64,7 @@ export function AboutPreview() {
       {/* Right Image (45%) */}
       <div className="w-full lg:w-[45%] h-[480px] lg:h-auto relative">
         <Image 
-          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80"
+          src="/images/Web/1.png"
           alt="Gym Atmosphere"
           fill
           className="object-cover"

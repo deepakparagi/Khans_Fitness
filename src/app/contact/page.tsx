@@ -158,7 +158,7 @@ export default function ContactPage() {
             {/* Header Image */}
             <div className="relative w-full h-[240px] mb-8">
               <Image 
-                src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80"
+                src="/images/hero/4722384.jpg"
                 alt="Gym Equipment"
                 fill
                 className="object-cover dark:grayscale-[20%] grayscale-0 transition-[filter] duration-300"

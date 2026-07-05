@@ -11,9 +11,8 @@ const NAV_LINKS = [
   { label: 'HOME', href: '/' },
   { label: 'ABOUT', href: '/about' },
   { label: 'PLANS', href: '/plans' },
-  { label: 'TRAINERS', href: '/trainers' },
   { label: 'TRANSFORMATIONS', href: '/transformations' },
-  { label: 'AI TOOLS', href: '/ai' },
+  { label: 'GALLERY', href: '/gallery' },
   { label: 'CONTACT', href: '/contact' },
 ];
 
@@ -51,7 +50,7 @@ export function Navbar() {
           <div className="flex-1 flex justify-start">
             <Link href="/" className="flex items-center group" data-cursor="magnetic">
               <Image 
-                src="/khans-fitness-official-logo-png.png" 
+                src="/khan's fitness logo.png" 
                 alt="Khan's Fitness Logo" 
                 width={160} 
                 height={50} 
