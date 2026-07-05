@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     description: "4.7★ rated unisex gym in Gadag-Betageri. Expert coaching, AI tools, proven transformations.",
     url: "https://khansfitness.in",
     siteName: "Khan's Fitness",
+  },
+  icons: {
+    icon: "/khan's fitness logo.png",
+    shortcut: "/khan's fitness logo.png",
+    apple: "/khan's fitness logo.png",
   }
 };
 

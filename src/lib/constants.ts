@@ -5,9 +5,9 @@ export const BRAND = {
   plusCode: "CMJ5+M7 Gadag-Betageri, Karnataka",
   phone: "+91 99645 91846",
   email: "khansfitness@gmail.com",
-  instagram: "@khansfitness_gdg",
-  instagramUrl: "https://www.instagram.com/khansfitness_gdg/",
-  facebookUrl: "https://facebook.com/khansfitness",
+  instagram: "@ismailkhan_khansfitness",
+  instagramUrl: "https://www.instagram.com/ismailkhan_khansfitness/",
+  facebookUrl: "https://www.facebook.com/khanfitness.gdg79/",
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Khan's+Fitness+Hatalgeri+Rd+Gadag-Betageri+Karnataka",
   hours: {
     weekday: "6:00 AM – 10:00 PM",
