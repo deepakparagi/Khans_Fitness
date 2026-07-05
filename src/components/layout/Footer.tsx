@@ -100,7 +100,7 @@ export function Footer() {
             [© 2026 KHAN&apos;S FITNESS · GADAG-BETAGERI, KARNATAKA]
           </p>
           <p className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-widest text-center md:text-right">
-            DESIGNED BY <a href="https://deepakparagi.github.io/Deepak-Paragi-Portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">DEEPCIPHER STUDIO_</a>
+            DESIGNED BY <a href="https://deepcipher-studio.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">DEEPCIPHER STUDIO_</a>
           </p>
         </div>
       </div>

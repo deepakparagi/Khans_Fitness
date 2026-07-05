@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode } from 'react'
 
 interface ThemeCtx {
-  theme: 'dark'
+  theme: 'dark' | 'light'
   toggle: () => void
 }
 

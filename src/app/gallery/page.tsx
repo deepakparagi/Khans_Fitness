@@ -23,14 +23,11 @@ const PHOTOS: MediaItem[] = [
 ];
 
 const VIDEOS: MediaItem[] = [
-  { type: 'video', src: '/videos/gallery/1a6a83ca-9fd4-4b04-8749-17fb8f859825.MP4', caption: 'Gym Highlights' },
-  { type: 'video', src: '/videos/gallery/1772258791759850.MP4', caption: 'Training Montage' },
-  { type: 'video', src: '/videos/gallery/1772811822455604.MP4', caption: 'Workout Session' },
-  { type: 'video', src: '/videos/gallery/1781366460024540.MP4', caption: 'Gym Tour' },
-  { type: 'video', src: '/images/gallery/IMG_0044.mov', caption: 'Training Clip' },
-  { type: 'video', src: '/images/gallery/IMG_0045.mov', caption: 'Workout Highlights' },
-  { type: 'video', src: '/images/gallery/IMG_2327.MOV', caption: 'Full Session' },
-  { type: 'video', src: '/images/gallery/IMG_2382.mov', caption: 'Gym Footage' },
+  { type: 'video', src: '/videos/gallery/1.mp4', caption: 'Video 1' },
+  { type: 'video', src: '/videos/gallery/2.MP4', caption: 'Video 2' },
+  { type: 'video', src: '/videos/gallery/3.MP4', caption: 'Video 3' },
+  { type: 'video', src: '/videos/gallery/4.MP4', caption: 'Video 4' },
+  { type: 'video', src: '/videos/gallery/5.MP4', caption: 'Video 5' },
 ];
 
 export default function GalleryPage() {
