@@ -24,10 +24,10 @@ const PHOTOS: MediaItem[] = [
 
 const VIDEOS: MediaItem[] = [
   { type: 'video', src: '/videos/gallery/1.mp4', caption: 'Video 1' },
-  { type: 'video', src: '/videos/gallery/2.MP4', caption: 'Video 2' },
-  { type: 'video', src: '/videos/gallery/3.MP4', caption: 'Video 3' },
-  { type: 'video', src: '/videos/gallery/4.MP4', caption: 'Video 4' },
-  { type: 'video', src: '/videos/gallery/5.MP4', caption: 'Video 5' },
+  { type: 'video', src: '/videos/gallery/2.mp4', caption: 'Video 2' },
+  { type: 'video', src: '/videos/gallery/3.mp4', caption: 'Video 3' },
+  { type: 'video', src: '/videos/gallery/4.mp4', caption: 'Video 4' },
+  { type: 'video', src: '/videos/gallery/5.mp4', caption: 'Video 5' },
 ];
 
 export default function GalleryPage() {
