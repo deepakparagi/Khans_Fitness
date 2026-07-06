@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     siteName: "Khan's Fitness",
   },
   icons: {
-    icon: "/khan's fitness logo.png",
-    shortcut: "/khan's fitness logo.png",
-    apple: "/khan's fitness logo.png",
+    icon: "/khans-fitness-official-logo.png",
+    shortcut: "/khans-fitness-official-logo.png",
+    apple: "/khans-fitness-official-logo.png",
   }
 };
 

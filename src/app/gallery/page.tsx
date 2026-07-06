@@ -262,7 +262,7 @@ export default function GalleryPage() {
                   <video
                     src={item.src}
                     muted
-                    preload="metadata"
+                    preload="none"
                     playsInline
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onMouseEnter={(e) => {

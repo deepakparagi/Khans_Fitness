@@ -50,7 +50,7 @@ export function Navbar() {
           <div className="flex-1 flex justify-start">
             <Link href="/" className="flex items-center group" data-cursor="magnetic">
               <Image 
-                src="/khan's fitness logo.png" 
+                src="/khans-fitness-official-logo.png" 
                 alt="Khan's Fitness Logo" 
                 width={160} 
                 height={50} 
