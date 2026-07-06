@@ -185,8 +185,8 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[var(--bg)] border-[var(--bg)]">
           {[
             { num: '500+', label: 'MEMBERS' },
-            { num: '5+', label: 'YEARS' },
-            { num: '6+', label: 'TRAINERS' },
+            { num: '10+', label: 'YEARS' },
+            { num: '4+', label: 'TRAINERS' },
             { num: '98%', label: 'SATISFACTION' },
           ].map((stat, i) => (
             <div key={i} className="p-8 lg:p-16 flex flex-col items-center justify-center text-center">
