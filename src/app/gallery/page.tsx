@@ -15,11 +15,11 @@ const PHOTOS: MediaItem[] = [
   { type: 'image', src: '/images/gallery/IMG_2550.jpg', caption: 'Gym Equipment' },
   { type: 'image', src: '/images/gallery/IMG_2839.jpg', caption: 'Workout Zone' },
   { type: 'image', src: '/images/gallery/IMG_2964.jpg', caption: 'Members in Action' },
-  { type: 'image', src: '/images/gallery/2856cb84-d15d-49aa-86cb-91d65221795c.JPG', caption: "Khan's Fitness" },
-  { type: 'image', src: '/images/gallery/9a3bbff1-14ab-43df-bfa1-d2515a796ed5.JPG', caption: 'Gym Interior' },
-  { type: 'image', src: '/images/gallery/bafedcc6-d298-476d-9dc0-3d077f177fe9.JPG', caption: 'Training Session' },
-  { type: 'image', src: '/images/gallery/c1239eed-c72f-4c1d-b175-4f94a3cfd887.JPG', caption: 'Fitness Zone' },
-  { type: 'image', src: '/images/gallery/ddfa470a-51c8-44de-bf0f-cf56100f9322.JPG', caption: 'Gym Atmosphere' },
+  { type: 'image', src: '/images/gallery/2856cb84-d15d-49aa-86cb-91d65221795c.jpg', caption: "Khan's Fitness" },
+  { type: 'image', src: '/images/gallery/9a3bbff1-14ab-43df-bfa1-d2515a796ed5.jpg', caption: 'Gym Interior' },
+  { type: 'image', src: '/images/gallery/bafedcc6-d298-476d-9dc0-3d077f177fe9.jpg', caption: 'Training Session' },
+  { type: 'image', src: '/images/gallery/c1239eed-c72f-4c1d-b175-4f94a3cfd887.jpg', caption: 'Fitness Zone' },
+  { type: 'image', src: '/images/gallery/ddfa470a-51c8-44de-bf0f-cf56100f9322.jpg', caption: 'Gym Atmosphere' },
 ];
 
 const VIDEOS: MediaItem[] = [
@@ -84,7 +84,7 @@ export default function GalleryPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hero/Gallery Hero.png"
+            src="/images/hero/gallery_hero.png"
             alt="Khan's Fitness Gallery"
             className="w-full h-full object-cover scale-105"
           />
