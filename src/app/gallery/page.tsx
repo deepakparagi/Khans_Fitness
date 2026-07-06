@@ -10,7 +10,7 @@ type MediaItem = {
   caption: string;
 };
 
-const PHOTOS: MediaItem[] = [
+const STATIC_PHOTOS: MediaItem[] = [
   { type: 'image', src: '/images/gallery/IMG_1839.jpg', caption: 'Training Floor' },
   { type: 'image', src: '/images/gallery/IMG_2550.jpg', caption: 'Gym Equipment' },
   { type: 'image', src: '/images/gallery/IMG_2839.jpg', caption: 'Workout Zone' },
@@ -22,7 +22,7 @@ const PHOTOS: MediaItem[] = [
   { type: 'image', src: '/images/gallery/ddfa470a-51c8-44de-bf0f-cf56100f9322.jpg', caption: 'Gym Atmosphere' },
 ];
 
-const VIDEOS: MediaItem[] = [
+const STATIC_VIDEOS: MediaItem[] = [
   { type: 'video', src: '/videos/gallery/1.mp4', caption: 'Video 1' },
   { type: 'video', src: '/videos/gallery/2.mp4', caption: 'Video 2' },
   { type: 'video', src: '/videos/gallery/3.mp4', caption: 'Video 3' },
@@ -37,8 +37,31 @@ export default function GalleryPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // Dynamic admin-uploaded media
+  const [blobPhotos, setBlobPhotos] = useState<MediaItem[]>([]);
+  const [blobVideos, setBlobVideos] = useState<MediaItem[]>([]);
+
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Fetch dynamic items from Blob
+    fetch('/api/gallery')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.items) {
+          const fetchedPhotos = data.items
+            .filter((item: any) => item.type === 'image')
+            .map((item: any) => ({ type: 'image', src: item.url, caption: 'Admin Upload' }));
+            
+          const fetchedVideos = data.items
+            .filter((item: any) => item.type === 'video')
+            .map((item: any) => ({ type: 'video', src: item.url, caption: 'Admin Upload' }));
+            
+          setBlobPhotos(fetchedPhotos);
+          setBlobVideos(fetchedVideos);
+        }
+      })
+      .catch(() => console.log('Failed to fetch dynamic gallery items'));
   }, []);
 
   const openLightbox = (list: MediaItem[], index: number) => {
@@ -73,6 +96,10 @@ export default function GalleryPage() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   });
+
+  // Combine static and dynamic items
+  const ALL_PHOTOS = [...blobPhotos, ...STATIC_PHOTOS];
+  const ALL_VIDEOS = [...blobVideos, ...STATIC_VIDEOS];
 
   return (
     <main className="min-h-screen bg-[var(--bg)]">
@@ -110,9 +137,9 @@ export default function GalleryPage() {
                 <span>MEDIA ARCHIVE</span>
               </div>
               <div className="flex items-center gap-6 font-mono text-[9px] md:text-[10px] tracking-[0.2em] text-white/30 uppercase">
-                <span>{PHOTOS.length} PHOTOS</span>
+                <span>{ALL_PHOTOS.length} PHOTOS</span>
                 <span className="w-px h-3 bg-white/20" />
-                <span>{VIDEOS.length} VIDEOS</span>
+                <span>{ALL_VIDEOS.length} VIDEOS</span>
               </div>
             </div>
           </div>
@@ -138,11 +165,11 @@ export default function GalleryPage() {
               {/* Stats */}
               <div className="flex gap-10">
                 <div className="flex flex-col">
-                  <span className="font-bebas text-[40px] md:text-[56px] text-[var(--acid)] leading-none">{PHOTOS.length}</span>
+                  <span className="font-bebas text-[40px] md:text-[56px] text-[var(--acid)] leading-none">{ALL_PHOTOS.length}</span>
                   <span className="font-mono text-[8px] md:text-[9px] text-white/35 uppercase tracking-[0.2em] mt-1">PHOTOS</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bebas text-[40px] md:text-[56px] text-[var(--acid)] leading-none">{VIDEOS.length}</span>
+                  <span className="font-bebas text-[40px] md:text-[56px] text-[var(--acid)] leading-none">{ALL_VIDEOS.length}</span>
                   <span className="font-mono text-[8px] md:text-[9px] text-white/35 uppercase tracking-[0.2em] mt-1">VIDEOS</span>
                 </div>
               </div>
@@ -167,45 +194,35 @@ export default function GalleryPage() {
       {/* ═══════════════════════════════════════════════════════════════════
           PHOTOS SECTION
       ═══════════════════════════════════════════════════════════════════ */}
-      <section ref={contentRef} className="px-4 sm:px-6 lg:px-10 2xl:px-20 pt-16 md:pt-24 pb-10 md:pb-16">
+      <section ref={contentRef} className="px-4 sm:px-6 lg:px-10 2xl:px-20 pt-16 md:pt-24 pb-16 md:pb-24">
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-10 md:mb-14 px-1">
           <ImageIcon className="w-5 h-5 text-[var(--acid)]" />
           <h2 className="font-bebas text-[36px] md:text-[48px] text-[var(--text-primary)] leading-none tracking-wide">
-            PHOTOS
+            PHOTOGRAPHY
           </h2>
           <div className="flex-1 h-px bg-[var(--border)]" />
           <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-[0.15em]">
-            {PHOTOS.length} ITEMS
+            {ALL_PHOTOS.length} ITEMS
           </span>
         </div>
 
-        {/* Editorial Photo Grid - CSS Grid with span patterns */}
-        {PHOTOS.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[200px] md:auto-rows-[250px] lg:auto-rows-[280px] gap-2 md:gap-3">
-            {PHOTOS.map((item, i) => {
-              // Create editorial layout: first image spans 2x2, every 4th spans 2 cols on desktop.
-              // On mobile, keep it simple to avoid gaps.
-              const spanClass =
-                i === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' :
-                i === 3 ? 'md:col-span-2 md:row-span-2' :
-                i === 5 ? 'md:col-span-2' :
-                i === 7 ? 'md:col-span-2' :
-                '';
-
-              return (
+        {/* Photo Grid */}
+        {ALL_PHOTOS.length > 0 && (
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
+            {ALL_PHOTOS.map((item, i) => (
                 <div
                   key={i}
-                  onClick={() => openLightbox(PHOTOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 ${spanClass} ${
+                  onClick={() => openLightbox(ALL_PHOTOS, i)}
+                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 break-inside-avoid ${
                     isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                   }`}
-                  style={{ transitionDelay: `${i * 70}ms` }}
+                  style={{ transitionDelay: `${(i % 10) * 50}ms` }}
                 >
                   <img
                     src={item.src}
                     alt={item.caption}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
                   {/* Subtle border glow on hover */}
@@ -213,8 +230,7 @@ export default function GalleryPage() {
                     style={{ boxShadow: 'inset 0 0 30px rgba(255,59,48,0.08)' }}
                   />
                 </div>
-              );
-            })}
+            ))}
           </div>
         )}
       </section>
@@ -236,35 +252,28 @@ export default function GalleryPage() {
           </h2>
           <div className="flex-1 h-px bg-[var(--border)]" />
           <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-[0.15em]">
-            {VIDEOS.length} ITEMS
+            {ALL_VIDEOS.length} ITEMS
           </span>
         </div>
 
-        {/* Video Grid - Large featured + smaller grid */}
-        {VIDEOS.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-            {VIDEOS.map((item, i) => {
-              // First video is featured (full width on mobile, spans left column taller on desktop)
-              const isFeatured = i === 0;
-
-              return (
+        {/* Video Grid */}
+        {ALL_VIDEOS.length > 0 && (
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
+            {ALL_VIDEOS.map((item, i) => (
                 <div
                   key={i}
-                  onClick={() => openLightbox(VIDEOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 ${
-                    isFeatured ? 'md:row-span-2' : ''
-                  } ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-                  style={{
-                    transitionDelay: `${i * 80}ms`,
-                    aspectRatio: isFeatured ? '16/10' : '16/9',
-                  }}
+                  onClick={() => openLightbox(ALL_VIDEOS, i)}
+                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 break-inside-avoid ${
+                    isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                  }`}
+                  style={{ transitionDelay: `${(i % 10) * 80}ms` }}
                 >
                   <video
                     src={item.src}
                     muted
-                    preload="none"
+                    preload="metadata"
                     playsInline
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     onMouseEnter={(e) => {
                       const v = e.currentTarget;
                       v.currentTime = 0;
@@ -278,13 +287,12 @@ export default function GalleryPage() {
 
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className={`${isFeatured ? 'w-16 h-16' : 'w-12 h-12'} rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-[var(--acid)] group-hover:border-[var(--acid)] group-hover:scale-110 transition-all duration-400 shadow-2xl`}>
-                      <Play className={`${isFeatured ? 'w-7 h-7' : 'w-5 h-5'} text-white ml-0.5`} fill="white" />
+                    <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-[var(--acid)] group-hover:border-[var(--acid)] group-hover:scale-110 transition-all duration-400 shadow-2xl">
+                      <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
                     </div>
                   </div>
                 </div>
-              );
-            })}
+            ))}
           </div>
         )}
       </section>
