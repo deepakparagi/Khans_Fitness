@@ -52,9 +52,9 @@ export default function AboutPage() {
           
           <TextReveal stagger={0.15}>
             <h1 className="font-bebas text-[clamp(36px,10vw,140px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col text-[var(--text-primary)] drop-shadow-2xl">
-              <span>ENGINEERED</span>
-              <span className="text-[var(--acid)]">FOR MAXIMUM</span>
-              <span>OUTPUT</span>
+              <span>UNLEASH</span>
+              <span className="text-[var(--acid)]">YOUR TRUE</span>
+              <span>POTENTIAL</span>
             </h1>
           </TextReveal>
           

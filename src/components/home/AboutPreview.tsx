@@ -47,8 +47,8 @@ export function AboutPreview() {
           </div>
           <TextReveal>
             <h2 className="font-bebas text-[clamp(40px,8vw,90px)] leading-[0.85] tracking-[-0.02em] uppercase text-white relative z-10">
-              ENGINEERED FOR <br/>
-              <span className="text-[var(--acid)] drop-shadow-[0_0_15px_rgba(255,59,48,0.3)]">MAXIMUM OUTPUT</span>
+              UNLEASH YOUR <br/>
+              <span className="text-[var(--acid)] drop-shadow-[0_0_15px_rgba(255,59,48,0.3)]">POTENTIAL</span>
             </h2>
           </TextReveal>
         </div>
