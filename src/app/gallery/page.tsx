@@ -209,12 +209,12 @@ export default function GalleryPage() {
 
         {/* Photo Grid */}
         {ALL_PHOTOS.length > 0 && (
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {ALL_PHOTOS.map((item, i) => (
                 <div
                   key={i}
                   onClick={() => openLightbox(ALL_PHOTOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 break-inside-avoid ${
+                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-square bg-[var(--surface)] ${
                     isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                   }`}
                   style={{ transitionDelay: `${(i % 10) * 50}ms` }}
@@ -222,7 +222,7 @@ export default function GalleryPage() {
                   <img
                     src={item.src}
                     alt={item.caption}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
                   {/* Subtle border glow on hover */}
@@ -258,12 +258,12 @@ export default function GalleryPage() {
 
         {/* Video Grid */}
         {ALL_VIDEOS.length > 0 && (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {ALL_VIDEOS.map((item, i) => (
                 <div
                   key={i}
                   onClick={() => openLightbox(ALL_VIDEOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 break-inside-avoid ${
+                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-[3/4] bg-[var(--surface)] ${
                     isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                   }`}
                   style={{ transitionDelay: `${(i % 10) * 80}ms` }}
@@ -273,7 +273,7 @@ export default function GalleryPage() {
                     muted
                     preload="metadata"
                     playsInline
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onMouseEnter={(e) => {
                       const v = e.currentTarget;
                       v.currentTime = 0;
