@@ -94,7 +94,7 @@ export default function AboutPage() {
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
               <span className="text-[var(--tag-text)] w-24 shrink-0">RATING</span>
-              <span className="text-[var(--text-primary)]">4.7 ★ (502+ Google reviews)</span>
+              <span className="text-[var(--text-primary)]">4.7 ★ (503+ Google reviews)</span>
             </div>
             <div className="flex items-start gap-4 border-b border-[var(--border)] pb-4">
               <span className="text-[var(--tag-text)] w-24 shrink-0">HOURS</span>

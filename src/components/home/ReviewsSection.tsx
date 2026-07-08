@@ -11,7 +11,7 @@ export function ReviewsSection() {
         <TextReveal stagger={0.1}>
           <h2 className="font-bebas text-[clamp(36px,8vw,130px)] leading-[0.85] tracking-[-0.02em] uppercase flex flex-col">
             <span className="text-[var(--text-primary)]">VERIFIED BY</span>
-            <span className="text-[var(--acid)]">502 MEMBERS</span>
+            <span className="text-[var(--acid)]">503 MEMBERS</span>
           </h2>
         </TextReveal>
         <p className="font-mono text-[12px] text-[var(--text-secondary)] mt-8 tracking-widest uppercase">
@@ -24,7 +24,7 @@ export function ReviewsSection() {
         
         {/* Row 1: Scroll Left */}
         <div className="group flex overflow-hidden">
-          <div className="flex shrink-0 animate-[marquee_35s_linear_infinite] md:animate-[marquee_40s_linear_infinite] group-hover:[animation-play-state:paused]">
+          <div className="flex shrink-0 animate-[marquee_1000s_linear_infinite] md:animate-[marquee_1200s_linear_infinite] group-hover:[animation-play-state:paused]">
             {[...REVIEWS, ...REVIEWS].map((review, i) => (
               <div 
                 key={`r1-${i}`}
@@ -49,7 +49,7 @@ export function ReviewsSection() {
 
         {/* Row 2: Scroll Right (reverse) */}
         <div className="group flex overflow-hidden">
-          <div className="flex shrink-0 animate-[marquee_35s_linear_infinite_reverse] md:animate-[marquee_40s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
+          <div className="flex shrink-0 animate-[marquee_1000s_linear_infinite_reverse] md:animate-[marquee_1200s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
             {/* Reverse the array to make it look different from row 1 */}
             {[...REVIEWS.slice().reverse(), ...REVIEWS.slice().reverse()].map((review, i) => (
               <div 
