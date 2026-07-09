@@ -11,6 +11,14 @@ type MediaItem = {
 };
 
 const STATIC_PHOTOS: MediaItem[] = [
+  { type: 'image', src: '/images/gallery/10.jpeg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/12.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/13.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/14.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/15.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/16.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/17.jpg', caption: 'Gallery Image' },
+  { type: 'image', src: '/images/gallery/18.jpg', caption: 'Gallery Image' },
   { type: 'image', src: '/images/gallery/IMG_1839.jpg', caption: 'Training Floor' },
   { type: 'image', src: '/images/gallery/IMG_2550.jpg', caption: 'Gym Equipment' },
   { type: 'image', src: '/images/gallery/IMG_2839.jpg', caption: 'Workout Zone' },
@@ -43,7 +51,7 @@ export default function GalleryPage() {
 
   useEffect(() => {
     setIsLoaded(true);
-    
+
     // Fetch dynamic items from Blob
     fetch('/api/gallery')
       .then((res) => res.json())
@@ -52,11 +60,11 @@ export default function GalleryPage() {
           const fetchedPhotos = data.items
             .filter((item: any) => item.type === 'image')
             .map((item: any) => ({ type: 'image', src: item.url, caption: 'Admin Upload' }));
-            
+
           const fetchedVideos = data.items
             .filter((item: any) => item.type === 'video')
             .map((item: any) => ({ type: 'video', src: item.url, caption: 'Admin Upload' }));
-            
+
           setBlobPhotos(fetchedPhotos);
           setBlobVideos(fetchedVideos);
         }
@@ -211,25 +219,24 @@ export default function GalleryPage() {
         {ALL_PHOTOS.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {ALL_PHOTOS.map((item, i) => (
-                <div
-                  key={i}
-                  onClick={() => openLightbox(ALL_PHOTOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-square bg-[var(--surface)] ${
-                    isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              <div
+                key={i}
+                onClick={() => openLightbox(ALL_PHOTOS, i)}
+                className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-square bg-[var(--surface)] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                   }`}
-                  style={{ transitionDelay: `${(i % 10) * 50}ms` }}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.caption}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  {/* Subtle border glow on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{ boxShadow: 'inset 0 0 30px rgba(255,59,48,0.08)' }}
-                  />
-                </div>
+                style={{ transitionDelay: `${(i % 10) * 50}ms` }}
+              >
+                <img
+                  src={item.src}
+                  alt={item.caption}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                {/* Subtle border glow on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ boxShadow: 'inset 0 0 30px rgba(255,59,48,0.08)' }}
+                />
+              </div>
             ))}
           </div>
         )}
@@ -260,38 +267,37 @@ export default function GalleryPage() {
         {ALL_VIDEOS.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {ALL_VIDEOS.map((item, i) => (
-                <div
-                  key={i}
-                  onClick={() => openLightbox(ALL_VIDEOS, i)}
-                  className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-[3/4] bg-[var(--surface)] ${
-                    isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              <div
+                key={i}
+                onClick={() => openLightbox(ALL_VIDEOS, i)}
+                className={`group relative overflow-hidden cursor-pointer border border-[var(--border)] hover:border-[var(--acid)] transition-all duration-500 aspect-[3/4] bg-[var(--surface)] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                   }`}
-                  style={{ transitionDelay: `${(i % 10) * 80}ms` }}
-                >
-                  <video
-                    src={item.src}
-                    muted
-                    preload="metadata"
-                    playsInline
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    onMouseEnter={(e) => {
-                      const v = e.currentTarget;
-                      v.currentTime = 0;
-                      v.play().catch(() => {});
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.pause();
-                      e.currentTarget.currentTime = 0;
-                    }}
-                  />
+                style={{ transitionDelay: `${(i % 10) * 80}ms` }}
+              >
+                <video
+                  src={item.src}
+                  muted
+                  preload="metadata"
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onMouseEnter={(e) => {
+                    const v = e.currentTarget;
+                    v.currentTime = 0;
+                    v.play().catch(() => { });
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.pause();
+                    e.currentTarget.currentTime = 0;
+                  }}
+                />
 
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-[var(--acid)] group-hover:border-[var(--acid)] group-hover:scale-110 transition-all duration-400 shadow-2xl">
-                      <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
-                    </div>
+                {/* Play button */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-[var(--acid)] group-hover:border-[var(--acid)] group-hover:scale-110 transition-all duration-400 shadow-2xl">
+                    <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
                   </div>
                 </div>
+              </div>
             ))}
           </div>
         )}
